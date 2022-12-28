@@ -39,3 +39,4 @@ $(CV_FULL): $(SRC_HEADER) $(SRC_MAIN) $(SRC_STATS)
 clean:
 	@echo "Remove temporary TeX files"
 	-rm -f $(CV_FULL) *.aux *.bbl *.bcf *.blg *.log *.out *.synctex.gz *.xml
+	-rm -f $(DATA)
