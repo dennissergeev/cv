@@ -5,12 +5,11 @@ import json
 import os
 import sys
 
-import ads
 import requests
 
 from paths import bibcodes_file, metrics_file
 
-ads.config.token = os.getenv("ADS_API_KEY")
+token = os.getenv("ADS_API_KEY")
 MET_URL = "https://api.adsabs.harvard.edu/v1/metrics"
 
 
@@ -25,7 +24,7 @@ def fetch(clobber=False):
         req = requests.post(
             MET_URL,
             headers={
-                "Authorization": f"Bearer {ads.config.token}",
+                "Authorization": f"Bearer {token}",
                 "Content-type": "application/json",
             },
             data=json.dumps({"bibcodes": bibcodes}),

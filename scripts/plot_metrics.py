@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Get bibcodes from NASA ADS."""
+"""Plot NASA ADS metrics."""
 import json
 import sys
 from datetime import datetime

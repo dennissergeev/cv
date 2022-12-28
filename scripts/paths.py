@@ -9,6 +9,10 @@ root = Path(__file__).resolve().parents[1].absolute()
 data = root / "data"
 bibcodes_file = data / "bibcodes.json"
 metrics_file = data / "metrics.json"
+publications_file = data / "publications.json"
 
 # Images directory
 images = root / "images"
+
+# TeX files
+stats_file = root / "stats.tex"

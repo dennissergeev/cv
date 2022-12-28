@@ -5,13 +5,12 @@ import json
 import os
 import sys
 
-import ads
 import requests
 
 from paths import bibcodes_file
 
 
-ads.config.token = os.getenv("ADS_API_KEY")
+token = os.getenv("ADS_API_KEY")
 LIB_URL = "https://api.adsabs.harvard.edu/v1/biblib/libraries"
 
 
@@ -22,14 +21,14 @@ def fetch(clobber=False):
         # Get library id
         req = requests.get(
             LIB_URL,
-            headers={"Authorization": f"Bearer {ads.config.token}"},
+            headers={"Authorization": f"Bearer {token}"},
         )
         library_id = req.json()["libraries"][0]["id"]
 
         # Get the list of bibcodes in the library
         req = requests.get(
             f"{LIB_URL}/{library_id}",
-            headers={"Authorization": f"Bearer {ads.config.token}"},
+            headers={"Authorization": f"Bearer {token}"},
         )
         with bibcodes_file.open("w") as f_json:
             json.dump(req.json(), f_json)

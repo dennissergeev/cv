@@ -1,5 +1,17 @@
 # Project
+stats.tex
 data/*.json
+*.ipynb
+
+# TeX
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.xml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
