@@ -2,18 +2,17 @@
 # -*- coding: utf-8 -*-
 """Get bibcodes from NASA ADS."""
 import json
-from pathlib import Path
 import os
 import sys
 
 import ads
 import requests
 
+from paths import bibcodes_file
+
 
 ads.config.token = os.getenv("ADS_API_KEY")
 LIB_URL = "https://api.adsabs.harvard.edu/v1/biblib/libraries"
-MET_URL = "https://api.adsabs.harvard.edu/v1/metrics"
-DATA = Path("data")
 
 
 def fetch(clobber=False):
@@ -32,8 +31,7 @@ def fetch(clobber=False):
             f"{LIB_URL}/{library_id}",
             headers={"Authorization": f"Bearer {ads.config.token}"},
         )
-        DATA.mkdir(exist_ok=True)
-        with (DATA / "bibcodes.json").open("w") as f_json:
+        with bibcodes_file.open("w") as f_json:
             json.dump(req.json(), f_json)
     else:
         print("Using cached bibcodes.")

@@ -2,25 +2,23 @@
 # -*- coding: utf-8 -*-
 """Get NASA ADS metrics."""
 import json
-from pathlib import Path
 import os
 import sys
 
 import ads
 import requests
 
+from paths import bibcodes_file, metrics_file
 
 ads.config.token = os.getenv("ADS_API_KEY")
-LIB_URL = "https://api.adsabs.harvard.edu/v1/biblib/libraries"
 MET_URL = "https://api.adsabs.harvard.edu/v1/metrics"
-DATA = Path("data")
 
 
 def fetch(clobber=False):
     """Fetch metrics from the NASA ADS private library."""
     if clobber:
         print("Fetching metrics from ADS.")
-        with (DATA / "bibcodes.json").open("r") as f_json:
+        with bibcodes_file.open("r") as f_json:
             bibcodes = json.load(f_json)["documents"]
 
         # Get metrics for the list of bibcodes
@@ -32,8 +30,7 @@ def fetch(clobber=False):
             },
             data=json.dumps({"bibcodes": bibcodes}),
         )
-        DATA.mkdir(exist_ok=True)
-        with (DATA / "metrics.json").open("w") as f_json:
+        with metrics_file.open("w") as f_json:
             json.dump(req.json(), f_json)
     else:
         print("Using cached metrics.")
