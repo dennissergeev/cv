@@ -16,23 +16,12 @@ MET_URL = "https://api.adsabs.harvard.edu/v1/metrics"
 DATA = Path("data")
 
 
-def get_metrics(clobber=False):
-    """Fetch metrics from a NASA ADS private library."""
+def fetch(clobber=False):
+    """Fetch metrics from the NASA ADS private library."""
     if clobber:
         print("Fetching metrics from ADS.")
-        # Get library id
-        req = requests.get(
-            LIB_URL,
-            headers={"Authorization": f"Bearer {ads.config.token}"},
-        )
-        library_id = req.json()["libraries"][0]["id"]
-
-        # Get the list of bibcodes in the library
-        req = requests.get(
-            f"{LIB_URL}/{library_id}",
-            headers={"Authorization": f"Bearer {ads.config.token}"},
-        )
-        bibcodes = req.json()["documents"]
+        with (DATA / "bibcodes.json").open("r") as f_json:
+            bibcodes = json.load(f_json)["documents"]
 
         # Get metrics for the list of bibcodes
         req = requests.post(
@@ -55,4 +44,4 @@ if __name__ == "__main__":
         clobber = True
     else:
         clobber = False
-    get_metrics(clobber=clobber)
+    fetch(clobber=clobber)
