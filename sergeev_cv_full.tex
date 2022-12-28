@@ -1,0 +1,463 @@
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper, 11pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+% \setmainfont{Arial}
+\setmainfont[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames, dvipsnames]{xcolor}
+\definecolor{exeter_night_green}{HTML}{022020}
+\definecolor{exeter_dark_green}{HTML}{003c3c}
+\definecolor{exeter_deep_green}{HTML}{007d69}
+\definecolor{exeter_bright_green}{HTML}{00c896}
+\definecolor{exeter_highlight_green}{HTML}{00dca5}
+
+\usepackage[scale=0.9]{geometry}
+
+%for lists within experience section
+\usepackage[inline]{enumitem}
+
+%to prevent spillover of tabular into next pages
+\usepackage{tabularx}
+% \usepackage{supertabular}
+% \newlength{\fullcollw}
+% \setlength{\fullcollw}{0.47\textwidth}
+\usepackage{ltablex}
+
+% aligned and centred versions of 'X' col. type
+% \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash\hspace{0pt}}X}
+\newcolumntype{C}{>{\centering\arraybackslash\hspace{0pt}}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash\hspace{0pt}}X}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\hypersetup{
+colorlinks,
+breaklinks,
+urlcolor=exeter_deep_green,
+linkcolor=exeter_deep_green,
+pdfauthor={Denis Sergeev},
+pdftitle={Denis Sergeev's CV}
+}
+
+%for icons
+\usepackage{fontawesome5}
+\usepackage{academicons}
+
+% \usepackage[UKenglish]{isodate}
+\usepackage[nodayofweek]{datetime}
+\newdateformat{mydate}{\THEDAY\ \shortmonthname[\THEMONTH]\ \THEYEAR}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\bfseries\raggedright}{}{0em}{}[\titlerule]
+% \sffamily
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+% for publications
+\usepackage[
+style=numeric,
+defernumbers=true,
+sorting=ydnt,
+minbibnames=3,
+% maxcitenames=5,
+% mincitenames=3,
+hyperref=true,
+uniquename=false,
+uniquelist=false,
+giveninits=true,
+doi=false,
+isbn=false,
+url=false,
+date=year,
+natbib=true,
+backend=biber]{biblatex}
+\addbibresource{my_publications.bib}
+\setlength\bibitemsep{0.5em}
+% Clear pages attribute
+\AtEveryBibitem{\clearfield{pages}}
+\AtEveryBibitem{\clearfield{issue}}
+\AtEveryBibitem{\clearfield{number}}
+\AtEveryBibitem{\clearfield{volume}}
+
+% Highlight the name specified by the author+an= attr in the bib file
+\renewcommand*{\mkbibnamegiven}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \ifitemannotation{highlight}
+    {\textbf{#1}}
+    {#1}}
+
+% Reverse numbering of bib items
+\makeatletter
+\define@key{blx@bib1}{keyword}{\xdef\mykeyword{#1}}
+\makeatother
+\newcommand{\stepKeywordCount}[1]{\csnumgdef{entrycount:#1}{\csuse{entrycount:#1}+1}}
+\AtDataInput{%
+  \iffieldundef{labelprefix}{%
+    \begingroup%
+      \edef\mytemp{\strfield{keywords}}
+      \expandafter\forcsvlist\expandafter{\expandafter\stepKeywordCount\expandafter}\expandafter{\mytemp}%
+    \endgroup%
+  }{}%
+}%
+\DeclareFieldFormat{labelnumber}{\mkbibdesc{#1}}
+\newrobustcmd*{\mkbibdesc}[1]{\number\numexpr\csuse{entrycount:\mykeyword}+1-#1\relax}
+\newcommand{\mykeyword}{}
+
+\defbibheading{underreview}[\refname]{{\textcolor{black}{\subsection*{#1}}}}
+\defbibheading{accepted}[\refname]{{\textcolor{black}{\subsection*{#1}}}}
+\defbibheading{published}[\refname]{{\textcolor{black}{\subsection*{#1}}}}
+
+\titlespacing*{\subsection}{0pt}{-0.75\baselineskip}{0.25\baselineskip}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+\newcommand{\highlight}[1]{\textbf{\textcolor{exeter_highlight_green}{#1}}}
+
+\usepackage{siunitx}
+\sisetup{group-separator={\,}}
+\newcommand{\estval}[1]{$\sim$\pounds\num{#1}}
+
+\usepackage{graphicx}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+\keepXColumns  % Needed to keep the tabularx columns stretched over the whole linewidth when using ltablex
+
+% non-numbered pages
+% \pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	HEADER
+%----------------------------------------------------------------------------------------
+\input{header}
+
+%----------------------------------------------------------------------------------------
+% Summary
+%----------------------------------------------------------------------------------------
+\section{About}
+% This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+I am fascinated by planetary atmospheres. In my research, I try to unravel the complexity of atmospheric processes on terrestrial planets using an hierarchy of 3D climate models. I am particularly interested in the role of convection and clouds in the planetary habitability.
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Academic Career}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+2021--     & Postdoctoral Research Fellow at the Department of Physics \& Astronomy, \textbf{University of Exeter} \\
+2018--2021 & Postdoctoral Research Fellow at the Department of Mathematics \& Statistics, \textbf{University of Exeter} \\
+2014--2018 & PhD in Meteorology at the \textbf{University of East Anglia} \\
+& Supervisors: Ian A. Renfrew, Thomas Spengler, Stephen Dorling \\
+& Thesis title (shortened): \href{https://ueaeprints.uea.ac.uk/id/eprint/68204/}{``Characteristics of Polar Lows in the Nordic Seas''} \\ %  and the Impact of Orography and Sea Ice on Their Development
+2009--2014 & Specialist Diploma in Meteorology (1\textsuperscript{st} class equiv.) at the \textbf{Lomonosov Moscow State University}  \\
+& Supervisor: Victor Stepanenko \\
+& Thesis title: \href{https://figshare.com/articles/thesis/SergeevDE_diploma_pdf/5326846/1}{``Idealised Numerical Modelling of Polar Mesocyclone Dynamics''}\\
+% Oct 2013 & Visitor at the \textbf{Geophysical Institute, University of Bergen} \\
+% & Supervisor: Prof. Thomas Spengler \\
+% Jul 2012 & Intern at the \textbf{A.M. Obukhov Institute of Atmospheric Physics} \\
+% & Supervisor: Dr. Alexey Eliseev \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% AWARDS
+%----------------------------------------------------------------------------------------
+\section{Awards and Scholarships}
+\begin{tabularx}{\linewidth}{@{}lXr@{}}
+\multicolumn{2}{@{}l}{\highlight{Direct Funding, PI}} & \highlight{Est. Total Value} \\
+2022 & Undergraduate Student Bursary (awarded; student declined) | RAS & \estval{1200} \\
+2017 & Best Presentation Award | CEEDA Symposium & \estval{100} \\
+2016 & Travel Bursary | Polar Prediction School & \estval{1000} \\
+2015 & Travel Award | High-Latitude Dynamics workshop & \estval{1000} \\ % https://highlatdynamics.w.uib.no/
+2014 & Lord Zuckerman PhD scholarship | School of Environmental Sciences, UEA & \estval{112000} \\
+2014 & Young Scientist Travel Award | EGU General Assembly & \estval{200} \\
+2014 & Russian Academy of Sciences Young Scientist Medal & \estval{1000} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+\section{Publications}
+% \begin{center}
+% {\small
+% \begin{itemize*}[itemjoin=\quad\quad]
+%     \item[\aiADS] \href{https://ui.adsabs.harvard.edu/user/libraries/2IT653szTA-gYw3vyA-9Sw}{NASA ADS:} 200 citations, h-index: 9
+%     \item[\aiGoogleScholar] \href{https://scholar.google.co.uk/citations?hl=en&user=_TPM1CcAAAAJ&view_op=list_works&sortby=pubdate}{Google Scholar:} 240 citations, h-index: 9
+%     % \item[\aiSemanticScholar] \href{https://www.semanticscholar.org/author/D.-Sergeev/93026299}{Semantic Scholar:} XXX citations, h-index: X
+% \end{itemize*}}
+% \end{center}
+% \begin{refsection}
+\nocite{*}
+\newrefcontext[labelprefix=U]
+\printbibliography[keyword=underreview, heading=underreview, title={Under Review}]
+\newrefcontext[labelprefix=A]
+\printbibliography[keyword=accepted, heading=accepted, title={Accepted}]
+\newrefcontext[labelprefix=P]
+\printbibliography[keyword=published, heading=published, title={Published}]
+% \end{refsection}
+
+%----------------------------------------------------------------------------------------
+% CONFERENCES
+%----------------------------------------------------------------------------------------
+\section{Conferences}
+\subsection*{Invited Talks}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Apr 2022 & \href{https://youtu.be/0uDBIp_EQrg}{Dichotomy of the atmospheric circulation on TRAPPIST-1e} \\ & NASA GISS Seminar | Online \\
+Jan 2022 & Dichotomy of the atmospheric circulation on TRAPPIST-1e \\ & NASA GSFC Extrasolar Planets Seminar | Online \\
+Nov 2021 & TRAPPIST-1 Habitable Atmosphere Intercomparison (THAI) \\ & MPIA APEx Exocoffee | Online \\
+May 2021 & \href{https://youtu.be/ZUfIK-HMgLw}{Overcast on TRAPPIST-1e} \\ & RCC MSU Geophysical Seminar | Online \\
+Sep 2020 & \href{https://youtu.be/E4UAoCoI1x8}{Simulations of convection over a range of atmospheric conditions on TRAPPIST-1e} \\ & THAI Workshop | Online \\
+Apr 2020 & \href{https://slides.com/denissergeev/2020-04-27-uor-met}{Atmospheric convection plays a key role in the climate of tidally locked exoplanets} \\ & University of Reading Meteorology Seminar | Online \\
+Apr 2020 & \href{https://slides.com/denissergeev/2020-04-21-nasa-giss}{Atmospheric convection plays a key role in the climate of tidally locked exoplanets} \\ & NASA GISS Seminar | Online \\
+\end{tabularx}
+\vspace{1ex}
+\subsection*{Contributed Talks}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Jul 2022 & Bistability of the atmospheric circulation on TRAPPIST-1e \\ & Rocky Worlds II | Oxford/Online \\
+Apr 2022 & Dichotomy of the atmospheric circulation on TRAPPIST-1e \\ & Exoplanet modelling in the James Webb era II: Terrestrial planets and subneptunes | Online \\
+Nov 2020 & \href{https://slides.com/denissergeev/2020-11-10-um-workshop-sergeev}{Explicit convection on tidally locked rocky exoplanets simulated with the UM nesting suite} \\ & Unified Model users workshop | Online \\
+Aug 2019 & \href{https://youtu.be/9nGIpQiPwDs}{Simulations of moist convection on tidally-locked rocky exoplanets} \\ & Exoclimes V | Oxford, UK \\
+Jun 2019 & \href{https://speakerdeck.com/dennissergeev/north-atlantic-polar-mesoscale-cyclones-in-era5-and-era-interim-reanalyses}{North Atlantic polar mesoscale cyclones in ERA5 and ERA-Interim reanalyses} \\ & IGP workshop | Norwich, UK \\
+Apr 2019 & Atmospheric convection on tidally-locked Earth-like exoplanets \\ & UK Exoplanet Community Meeting | London, UK \\
+Jun 2018 & \href{https://speakerdeck.com/dennissergeev/polar2018}{Modification of Polar Low Development by Sea Ice and Svalbard Orography} \\ & POLAR2018 | Davos, Switzerland \\
+Oct 2017 & \href{https://figshare.com/articles/The_influence_of_Svalbard_orography_and_sea_ice_on_polar_low_development/5510416}{The influence of Svalbard orography and sea ice on polar low development} \\ & 18th Cyclone Workshop | Sainte-Adèle, Canada \\
+Apr 2017 & \href{http://dennissergeev.github.io/ceeda2017}{Polar lows and how background environment can influence their development} \\ & Cambridge Earth Systems Science EnvEast Doctoral Alliance Symposium | Cambridge, UK \\
+May 2016 & Structure of the shear-line polar low south of Svalbard \\ & NORPAN kick-off meeting | Tokyo, Japan \\
+Apr 2016 & \href{http://slides.com/denissergeev/deck}{Structure of the shear-line polar low south of Svalbard} \\ & 13th European Polar Lows Working Group Workshop | Paris, France \\
+\end{tabularx}
+\vspace{1ex}
+\subsection*{Poster Presentations}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Nov 2022 & Dry Modern-Day Mars Climate in the Met Office Unified Model \\ & UK Solar System Planetary Atmospheres | London, UK \\
+Sep 2022 & Bistability of the Atmospheric Circulation on TRAPPIST-1e \\ & UK Exoplanet Community Meeting | Edinburgh, UK \\
+Jul 2015 & Structure and dynamics of a shear-line polar low during a cold-air outbreak over the Norwegian Sea \\ & Royal
+Meteorological Society Student Conference | Birmingham, UK \\
+Mar 2015 & Structure and dynamics of a shear-line polar low during a cold-air outbreak over the Norwegian Sea \\ & Dynamics of Atmosphere-Ice-Ocean Interactions in the High Latitudes workshop | Rosendal, Norway \\
+May 2014 & Numerical modelling of polar mesocyclones dynamics diagnosed by the energy budget \\ & EGU General Assembly | Vienna, Austria \\
+Apr 2013 & Impact of subgrid-scale vegetation heterogeneity on the carbon cycle \\ & EGU General Assembly | Vienna, Austria \\
+Apr 2013 & Numerical modelling of polar mesocyclones generation mechanisms \\ & EGU
+General Assembly | Vienna, Austria \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% SUPERVISION
+%----------------------------------------------------------------------------------------
+\section{Supervision}
+I am an integral member of the \href{https://exoclimatology.com}{Exeter Exoplanet Theory Group (EETG)}, and have been actively involved in the supervision of students --- both as a \highlight{lead supervisor} and as a co-supervisor. Undergraduate and Masters students who went on to do an MSc/PhD are marked with *.
+\\
+\subsection*{PhD Supervision (1)}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Sep 2021--Sep 2025 & Martha (Mei Ting) Mak \\
+                  & Project: Hazes in Planetary Atmospheres \\
+                  & Co-supervisors: Prof. N. J. Mayne, Dr. E. Hébrard, Dr. J. Manners \\
+\end{tabularx}
+
+\subsection*{Masters Supervision (9)}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Sep 2020--Sep 2022 & Danny McCulloch* (MSci by Research) \\
+                  & Project: Climate Modelling of Modern-Day Mars \\
+                  & Co-supervisors: Prof. N. J. Mayne, Prof. M. Bate \\
+Apr 2021--Sep 2022 & Meghan Plumridge* (MSci by Research) \\
+                  & Project: Climate Modelling of Early Mars \\
+                  & Co-supervisors: Prof. N. J. Mayne, Prof. M. Bate \\
+Jan 2021--May 2022 & Jasper Chadwick \& Esse Sellwood \\
+                  & Project: Ocean Heat Transport on Rocky Exoplanets \\
+                  & Co-supervisors: Prof. F. H. Lambert, J. Eager-Nash \\
+Jan 2021--May 2022 & Isabelle Browne \& Oakley Young \\
+                  & Project: Greenhouse Effect on Early Mars \\
+                  & Co-supervisors: Prof. N. J. Mayne, Prof. F. H. Lambert, J. Eager-Nash \\
+Jan 2020--May 2021 & Toby Ferrison \\
+                  & Project: Titan Climate Modelling \\
+                  & Co-supervisor: Prof. F. H. Lambert \\
+Oct 2018--May 2019 & Jake Eager-Nash* \& David Reichelt \\
+                  & Project: Implications of Stellar Type on the Climate of Tidally Locked Terrestrial Exoplanets \\
+                  & Co-supervisors: Prof. N. J. Mayne, Prof. F. H. Lambert \\
+\end{tabularx}
+\subsection*{Undergraduate and Summer Internship Supervision (7)}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Jul--Sep 2022 & Oakley Young \\
+              & Project: Ekman Ocean Model \\
+              & Co-supervisors: J. Eager-Nash, Prof. F. H. Lambert \\
+\highlight{Jun--Sep 2022} & \highlight{James McDermott* \& Lottie Woods*} \\
+                          & \highlight{Project: Simulations of Lightning Storms on Tidally Locked Rocky Exoplanets} \\
+Jun--Aug 2021 & Oakley Young \\
+              & Project: Climate Modelling of Archean Earth \\
+              & Co-supervisors: J. Eager-Nash, Prof. N. J. Mayne \\
+Jun--Aug 2021 & Joshua Parkin \& Esse Sellwood \\
+              & Project: The Impact of Host Star Spectrum on the Climate of Rocky Exoplanets \\
+              & Co-supervisors: J. Eager-Nash, Prof. N. J. Mayne \\
+Jun--Aug 2019 & Isobel Parry* \\
+              & Project: Water Cycle on Proxima Centauri b \\
+              & Co-supervisor: Prof. F. H. Lambert \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% TEACHING
+%----------------------------------------------------------------------------------------
+\section{Teaching}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Jan 2018 & \href{https://ueapy.github.io/pythoncourse2018}{ECR course ``Introduction to Python in Environmental Sciences''} \\ & Course creator \& leader | University of East Anglia \\
+2015--2017 & Teaching assistance | Modelling Environmental Processes, Meteorology, Numerical Skills \\ & University of East Anglia \\
+Apr 2017 & Field Course teaching assistance \\ & Slapton / University of East Anglia \\
+Nov 2016 & \href{https://ueapy.github.io/enveast_python_course}{Python training course} \\ & Course creator \& leader | University of East Anglia \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Languages & English (fluent), French (basic), Russian (native speaker) \\
+Numerical models &  Met Office Unified Model, LFRic, SOCRATES, LAGRANTO, Isca \\
+Programming languages &  Python, FORTRAN, MATLAB, NCL \\
+Python libraries & cartopy, cython, iris, matplotlib, numpy, pandas, pyvista, xarray \\
+Parallel computing & Dask, MPI, OpenMP \\
+Version control & Git, Subversion \\
+Document preparation & \LaTeX, Markdown, HTML, CSS, reST
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% TRAINING & EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Vocational Training}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Dec 2022 & Interview Training \\
+Jul 2020 & Writing Workshop for Climate Scientists \\
+Mar 2020 & \href{https://ers-imaging.github.io/uk_workshop}{ESA JWST Master Class} \\
+Jul 2019 & \href{https://indico.ictp.it/event/8669}{ICTP Summer School on Convective Organization and Climate Sensitivity} \\
+Apr 2018 & \href{https://www.nag.com/content/fortran-modernization-workshop}{Fortran Modernisation Workshop} \\
+Jan 2018 & \href{http://www.petans.co.uk/courses/survival/huet-caebs/}{Helicopter Underwater Escape Training Course (CA-EBS)} \\
+Dec 2017 & Sea Survival Course \\
+Jun 2017 & Weather presenting \\
+Feb 2017 & Level 1 First Aid for Field Work Course \\
+Jan 2017 & Raspberry Pi Basics \\
+Apr 2016 & WWRP/WCRP/Bolin Center Polar Prediction School \\
+Dec 2014 & UK Met Office Unified Model Training \\
+% Dec 2011 & \href{https://doi.org/10.1175/BAMS-D-11-00048.1}{Global Climate Change course} \\
+\end{tabularx}
+
+\section{Vocational Experience}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Apr--Jun 2018 & Data Technician \\ & \href{https://github.com/IGPResearch}{Processing of meteorological data collected in the IGP field campaign} | University of East Anglia \\
+2015--2018 & Founder and Leader \\ & \href{https://ueapy.github.io/}{Local Python Users Group} | University of East Anglia \\
+Feb--Mar 2018 & Member of the Meteorology Team \\ & \href{https://twitter.com/igpresearch}{The Iceland-Greenland Seas Project (IGP) field campaign} | Akureyri, Iceland \\
+% Characterising the atmospheric forcing and the ocean response of coupled atmosphere-ocean processes; in particular cold-air outbreaks in the vicinity of the marginal ice zone and their effect on the ocean
+Mar 2015 & Rapporteur \\ & \href{https://highlatdynamics.w.uib.no}{Dynamics of Atmosphere-Ice-Ocean Interactions in the High-Latitudes} | Rosendal, Norway \\
+Aug--Sep 2013 & Weather Forecaster \\ & Forecast and Briefing Service | Main Aviation Meteorological Centre, Vnukovo Airport \\
+% Aug 2012 & Field practice in meteorology | Study of prevailing mesoscale processes via wind characteristic measurements and lake hydrothermodynamical modelling | Kamchatka, Russia \\
+% Jan--Feb 2012 & Field practice in meteorology | Karel Republic, Russia \\
+\end{tabularx}
+
+\section{Impact}
+\begin{itemize}[nosep, leftmargin=10pt]
+    \item Press Releases
+    \begin{itemize}
+        \item Joint PR from the \href{https://www.exeter.ac.uk/research/news/articles/questtouncoverintricacies.html}{University of Exeter}, \href{https://www.american.edu/news/20220811-trappist-1.cfm}{American University}, \& \href{https://www.insu.cnrs.fr/fr/cnrsinfo/la-quete-pour-percer-le-mystere-des-climats-de-planetes-similaires-la-terre-avance}{INSU CNRS} on the THAI project.
+    \end{itemize}
+    \item Interviews
+    \begin{itemize}
+        \item Featured in the \href{https://theworld.org/stories/2018-08-03/sea-and-sky-scientists-brave-wicked-weather-explore-key-ocean-current}{PRI podcast} on the IGP campaign
+    \end{itemize}
+    \item Visualisation
+    \begin{itemize}
+        \item \href{https://exetersciencecentre.org/gallery/denis_sergeev_uoe_exoplanets/}{``Exoplanetary Atmospheres''} at Science as Art Gallery (Exeter Science Centre)
+        \item \href{https://phys.org/news/2020-06-presence-airborne-signify-habitability-distant.html}{3D visualisation of dusty atmospheres for a press release}
+    \end{itemize}
+    \item School Visits
+    \begin{itemize}
+        \item Visit to Pool Academy as part of the \href{https://physics-astronomy.exeter.ac.uk/exoplanetexplorers/}{``Exoplanet Explorers'' programme}
+    \end{itemize}
+    \item Scientific Consulting
+    \begin{itemize}
+        \item \href{https://www.wethecurious.org/curious-stuff/stargazing-night-sky/exoplanet-explorers}{Videogame ``Exoplanet Explorers''} (STFC Nucleus grant ``4EP'', PI Prof. N. J. Mayne)
+    \end{itemize}
+    \item Blogging
+    \begin{itemize}
+        \item \href{http://www.scisnack.com/2015/12/17/disastrous-disaster-movies}{Disastrous Disaster Movies}
+        \item \href{http://www.scisnack.com/2015/03/04/polar-lows-what-fuels-arctic-hurricanes}{Polar Lows: What Fuels Arctic Hurricanes?}
+        \item \href{http://www.scisnack.com/2014/12/17/worldwide-weird-weather-words}{Worldwide Weird Weather Words}
+    \end{itemize}
+    % \item Miscellaneous
+    % \begin{itemize}
+    %     \item Featured article in QJRMS
+    % \end{itemize}
+\end{itemize}
+
+\section{Academic Community}
+\begin{itemize}[nosep, leftmargin=10pt]
+    \item Organisation of Scientific Meetings
+    \begin{itemize} 
+        \item ExoSLAM Summer School (Co-chair) | Exeter, Jun 2023 | $\sim$50 attendees
+        \item Exoclimes VI (Member of LOC) | Exeter, Jun 2023 | $\sim$200 attendees
+        \item Exeter Exoplanet Theory Group Summer Retreat | Mawgan Porth, Aug--Sep 2022 | 15 attendees
+    \end{itemize}
+    \item Committees and steering groups
+    \begin{itemize}
+        \item Climates Using Interactive Suites of Intercomparisons Nested for Exoplanet Studies (CUISINES)
+    \end{itemize}
+    \item Reviewing
+    \begin{itemize}
+        \item Journals: Geophysical Research Letters, Nature Astronomy, Astrophysical Journal, Planetary and Space Studies, Quarterly Journal of the Royal Meteorological Society
+        \item Grants: STFC (Consolidated)
+    \end{itemize}
+    \item Professional Memberships: Fellow of the Royal Astronomical Society, Member of the Europlanet Society
+\end{itemize}
+
+\end{document}
+% \begin{tabularx}{\linewidth}{ @{}l r@{} }
+% \textbf{Designation} & \hfill Mar 2019 - Jan 2021 \\[3.75pt]
+% \multicolumn{2}{@{}X@{}}{
+% \begin{minipage}[t]{\linewidth}
+%     \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+%         \item[--] long long line of blah blah that will wrap when the table fills the column width
+%         \item[--] again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
+%     \end{itemize}
+%     \end{minipage}
+% }
+% \end{tabularx}
+
+% %Projects
+% \section{Projects}
+
+% \begin{tabularx}{\linewidth}{ @{}l r@{} }
+% \textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
+% \multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+% \end{tabularx}
