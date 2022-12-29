@@ -1,0 +1,15 @@
+name: cv_dev
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - black
+  - flake8
+  - ipykernel
+  - isort
+  - matplotlib
+  - numpy
+  - pandas
+  - pip
+  - pre-commit
+  - requests
