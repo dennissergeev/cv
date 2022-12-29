@@ -40,5 +40,7 @@ $(CV_FULL): $(SRC_HEADER) $(SRC_MAIN) $(SRC_STATS)
 .PHONY: clean
 clean:
 	@echo "Remove temporary TeX files"
-	-rm -f $(CV_FULL) *.aux *.bbl *.bcf *.blg *.log *.out *.synctex.gz *.xml
+	-rm -f *.aux *.bbl *.bcf *.blg *.log *.out *.synctex.gz *.xml
 	-rm -f $(DATA)
+	-rm -f $(METRICS_FIG)
+	-rm -f $(CV_FULL)
