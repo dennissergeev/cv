@@ -1,5 +1,8 @@
 # Project
+*.pdf
 stats.tex
+pubs.tex
+images/sergeev_ads_metrics.pdf
 data/*.json
 *.ipynb
 

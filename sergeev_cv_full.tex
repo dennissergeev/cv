@@ -87,63 +87,6 @@ pdftitle={Denis Sergeev's CV}
 % \sffamily
 \titlespacing{\section}{0pt}{10pt}{10pt}
 
-% for publications
-\usepackage[
-style=numeric,
-defernumbers=true,
-sorting=ydnt,
-minbibnames=3,
-% maxcitenames=5,
-% mincitenames=3,
-hyperref=true,
-uniquename=false,
-uniquelist=false,
-giveninits=true,
-doi=false,
-isbn=false,
-url=false,
-date=year,
-natbib=true,
-backend=biber]{biblatex}
-\addbibresource{data/pubs.bib}
-\setlength\bibitemsep{0.5em}
-% Clear pages attribute
-\AtEveryBibitem{\clearfield{pages}}
-\AtEveryBibitem{\clearfield{issue}}
-\AtEveryBibitem{\clearfield{number}}
-\AtEveryBibitem{\clearfield{volume}}
-
-% Highlight the name specified by the author+an= attr in the bib file
-\renewcommand*{\mkbibnamegiven}[1]{%
-  \ifitemannotation{highlight}
-    {\textbf{#1}}
-    {#1}}
-\renewcommand*{\mkbibnamefamily}[1]{%
-  \ifitemannotation{highlight}
-    {\textbf{#1}}
-    {#1}}
-
-% Reverse numbering of bib items
-\makeatletter
-\define@key{blx@bib1}{keyword}{\xdef\mykeyword{#1}}
-\makeatother
-\newcommand{\stepKeywordCount}[1]{\csnumgdef{entrycount:#1}{\csuse{entrycount:#1}+1}}
-\AtDataInput{%
-  \iffieldundef{labelprefix}{%
-    \begingroup%
-      \edef\mytemp{\strfield{keywords}}
-      \expandafter\forcsvlist\expandafter{\expandafter\stepKeywordCount\expandafter}\expandafter{\mytemp}%
-    \endgroup%
-  }{}%
-}%
-\DeclareFieldFormat{labelnumber}{\mkbibdesc{#1}}
-\newrobustcmd*{\mkbibdesc}[1]{\number\numexpr\csuse{entrycount:\mykeyword}+1-#1\relax}
-\newcommand{\mykeyword}{}
-
-\defbibheading{underreview}[\refname]{{\textcolor{black}{\subsection*{#1}}}}
-\defbibheading{accepted}[\refname]{{\textcolor{black}{\subsection*{#1}}}}
-\defbibheading{published}[\refname]{{\textcolor{black}{\subsection*{#1}}}}
-
 \titlespacing*{\subsection}{0pt}{-0.75\baselineskip}{0.25\baselineskip}
 
 %debug page outer frames
@@ -216,23 +159,9 @@ I am fascinated by planetary atmospheres. In my research, I try to unravel the c
 %	PUBLICATIONS
 %----------------------------------------------------------------------------------------
 \section{Publications}
-% \begin{center}
-% {\small
-% \begin{itemize*}[itemjoin=\quad\quad]
-%     \item[\aiADS] \href{https://ui.adsabs.harvard.edu/user/libraries/2IT653szTA-gYw3vyA-9Sw}{NASA ADS:} 200 citations, h-index: 9
-%     \item[\aiGoogleScholar] \href{https://scholar.google.co.uk/citations?hl=en&user=_TPM1CcAAAAJ&view_op=list_works&sortby=pubdate}{Google Scholar:} 240 citations, h-index: 9
-%     % \item[\aiSemanticScholar] \href{https://www.semanticscholar.org/author/D.-Sergeev/93026299}{Semantic Scholar:} XXX citations, h-index: X
-% \end{itemize*}}
-% \end{center}
-% \begin{refsection}
-\nocite{*}
-\newrefcontext[labelprefix=U]
-\printbibliography[keyword=underreview, heading=underreview, title={Under Review}]
-\newrefcontext[labelprefix=A]
-\printbibliography[keyword=accepted, heading=accepted, title={Accepted}]
-\newrefcontext[labelprefix=P]
-\printbibliography[keyword=published, heading=published, title={Published}]
-% \end{refsection}
+\begin{itemize}
+\input{pubs}
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
 % CONFERENCES
