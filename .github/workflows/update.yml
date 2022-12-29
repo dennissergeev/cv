@@ -1,0 +1,42 @@
+name: Update CV
+on:
+  push:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+  schedule:
+    - cron: "00 08 * * *"
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+
+      - name: Install Conda environment from environment.yml
+        uses: mamba-org/provision-with-micromamba@main
+
+      - name: Get data from ADS
+        shell: bash -l {0}
+        run: |
+          make inputs
+        env:
+          ADS_API_KEY: ${{ secrets.ADS_API_KEY }}
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          run: |
+            apk add make
+            make cv
+
+      - name: Publish
+        shell: bash -l {0}
+        run: |
+          git checkout --orphan build
+          git rm --cached -rf . > /dev/null 2>&1
+          git add -f sergeev_cv_full.pdf
+          git add -f data/*.json
+          git -c user.name='gh-actions' -c user.email='gh-actions' commit -m "build cv"
+          git push -q -f https://github.com/$GITHUB_REPOSITORY build > /dev/null 2>&1

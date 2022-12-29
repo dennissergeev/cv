@@ -12,28 +12,30 @@ DATA = \
 METRICS_FIG = images/sergeev_ads_metrics.pdf
 SCRIPTS = scripts
 
-all: $(CV_FULL)
+cv: $(CV_FULL)
+
+inputs: $(METRICS_FIG) $(SRC_STATS)
 
 $(METRICS_FIG): $(DATA)
 	@echo "Make the figure"
 	$(SCRIPTS)/plot_metrics.py --year_start 2014
 
 $(SRC_STATS): $(DATA)
-	@echo "Save the stats"
+	@echo "Make stats"
 	$(SCRIPTS)/write_stats.py
 
 $(DATA): $(SCRIPTS)/*.py
-	@echo "Get data"
+	@echo "Make data"
 	$(SCRIPTS)/get_bibcodes.py --clobber
 	$(SCRIPTS)/get_metrics.py --clobber
 	$(SCRIPTS)/get_publications.py --clobber
 
 $(CV_FULL): $(SRC_HEADER) $(SRC_MAIN) $(SRC_STATS)
-	@echo "Run TeX"
-	# $(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
-	# $(BIB) $(basename $(SRC_MAIN)).bcf
-	# $(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
-	# $(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
+	@echo "Make TeX"
+	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
+	$(BIB) $(basename $(SRC_MAIN)).bcf
+	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
+	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
 
 .PHONY: clean
 clean:
