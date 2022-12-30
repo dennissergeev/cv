@@ -36,6 +36,7 @@
 % Lists and tables
 \usepackage[inline]{enumitem}
 \usepackage{tabularx}
+\usepackage{ltablex}
 \usepackage{multicol}
 \usepackage{multirow}
 
@@ -68,6 +69,8 @@ pdftitle={Denis Sergeev's CV}
 
 %----------------------------------------------------------------------------------------
 \begin{document}
+% Needed to keep the tabularx columns stretched over the whole linewidth when using ltablex
+\keepXColumns
 
 %----------------------------------------------------------------------------------------
 % Header
