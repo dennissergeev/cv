@@ -26,7 +26,7 @@
 
 % Geometry
 \usepackage[scale=1.0]{geometry}
-\geometry{a4paper, top=10mm, bottom=10mm, left=10mm, right=10mm, heightrounded, includehead, includefoot}
+\geometry{a4paper, top=10mm, bottom=10mm, left=10mm, right=10mm, heightrounded, includehead, includefoot, headheight=18pt}
 
 % Headers
 \usepackage{lastpage}
@@ -50,9 +50,10 @@
 
 % Section formatting
 \usepackage{titlesec}
-\titleformat{\section}{\Large\scshape\bfseries\raggedright}{}{0em}{}[\titlerule]
+\titleformat{\section}{\Large\bfseries\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{10pt}{10pt}
-\titlespacing*{\subsection}{0pt}{-0.75\baselineskip}{0.25\baselineskip}
+% \titlespacing*{\section}{0pt}{-0.05\baselineskip}{0.75\baselineskip}
+\titlespacing*{\subsection}{0pt}{-1.0\baselineskip}{0.1\baselineskip}
 
 % Links
 \usepackage{url}
