@@ -1,35 +1,27 @@
 %----------------------------------------------------------------------------------------
-%	DOCUMENT DEFINITION
+% Curriculum Vitae Main TeX Document
 %----------------------------------------------------------------------------------------
-
-% article class because we want to fully customize the page and not use a cv template
+% Article class because we want to fully customize the page and not use a cv template
 \documentclass[a4paper, 11pt]{article}
 
-%----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
+% Geometry
+\usepackage[scale=0.9]{geometry}
+% To debug page outer frames
+%\usepackage{showframe}
 
-% % fontspec allows you to use TTF/OTF fonts directly
-\usepackage{fontspec}
-\defaultfontfeatures{Ligatures=TeX}
-% \setmainfont{Arial}
-\setmainfont[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES
-%----------------------------------------------------------------------------------------
-\usepackage{url}
+% Paragraph formatting
 \usepackage{parskip}
 
-%other packages for formatting
+% fontspec allows you to use TTF/OTF fonts directly
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
+
+% Icons
+\usepackage{fontawesome5}
+\usepackage{academicons}
+
+% Colours and graphics
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames, dvipsnames]{xcolor}
@@ -39,30 +31,22 @@
 \definecolor{exeter_bright_green}{HTML}{00c896}
 \definecolor{exeter_highlight_green}{HTML}{00dca5}
 
-\usepackage[scale=0.9]{geometry}
+\newcommand{\highlight}[1]{\textbf{\textcolor{exeter_bright_green}{#1}}}
 
-%for lists within experience section
+% Lists and tables
 \usepackage[inline]{enumitem}
-
-%to prevent spillover of tabular into next pages
 \usepackage{tabularx}
-% \usepackage{supertabular}
-% \newlength{\fullcollw}
-% \setlength{\fullcollw}{0.47\textwidth}
-\usepackage{ltablex}
-
-% aligned and centred versions of 'X' col. type
-% \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
-\newcolumntype{L}{>{\raggedright\arraybackslash\hspace{0pt}}X}
-\newcolumntype{C}{>{\centering\arraybackslash\hspace{0pt}}X}
-\newcolumntype{R}{>{\raggedleft\arraybackslash\hspace{0pt}}X}
-
-%custom \section
-\usepackage{titlesec}
 \usepackage{multicol}
 \usepackage{multirow}
 
-%Setup hyperref package, and colours for links
+% Section formatting
+\usepackage{titlesec}
+\titleformat{\section}{\Large\scshape\bfseries\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+\titlespacing*{\subsection}{0pt}{-0.75\baselineskip}{0.25\baselineskip}
+
+% Links
+\usepackage{url}
 \usepackage[unicode, draft=false]{hyperref}
 \hypersetup{
 colorlinks,
@@ -73,44 +57,20 @@ pdfauthor={Denis Sergeev},
 pdftitle={Denis Sergeev's CV}
 }
 
-%for icons
-\usepackage{fontawesome5}
-\usepackage{academicons}
-
-% \usepackage[UKenglish]{isodate}
+% Date formatting
 \usepackage[nodayofweek]{datetime}
 \newdateformat{mydate}{\THEDAY\ \shortmonthname[\THEMONTH]\ \THEYEAR}
 
-%CV Sections inspired by:
-%http://stefano.italians.nl/archives/26
-\titleformat{\section}{\Large\scshape\bfseries\raggedright}{}{0em}{}[\titlerule]
-% \sffamily
-\titlespacing{\section}{0pt}{10pt}{10pt}
-
-\titlespacing*{\subsection}{0pt}{-0.75\baselineskip}{0.25\baselineskip}
-
-%debug page outer frames
-%\usepackage{showframe}
-
-\newcommand{\highlight}[1]{\textbf{\textcolor{exeter_highlight_green}{#1}}}
-
+% Units formatting
 \usepackage{siunitx}
 \sisetup{group-separator={\,}}
 \newcommand{\estval}[1]{$\sim$\pounds\num{#1}}
 
-\usepackage{graphicx}
-
-%----------------------------------------------------------------------------------------
-%	BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
 \begin{document}
-\keepXColumns  % Needed to keep the tabularx columns stretched over the whole linewidth when using ltablex
-
-% non-numbered pages
-% \pagestyle{empty}
 
 %----------------------------------------------------------------------------------------
-%	HEADER
+% Header
 %----------------------------------------------------------------------------------------
 \input{header}
 
@@ -118,11 +78,12 @@ pdftitle={Denis Sergeev's CV}
 % Summary
 %----------------------------------------------------------------------------------------
 \section{About}
-% This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
-I am fascinated by planetary atmospheres. In my research, I try to unravel the complexity of atmospheric processes on terrestrial planets using an hierarchy of 3D climate models. I am particularly interested in the role of convection and clouds in the planetary habitability.
+I am fascinated by planetary atmospheres.
+In my research, I try to unravel the complexity of atmospheric processes on terrestrial planets using an hierarchy of 3D climate models.
+I am particularly interested in the role of convection and clouds in the planetary habitability.
 
 %----------------------------------------------------------------------------------------
-%	EDUCATION
+% Education and experience
 %----------------------------------------------------------------------------------------
 \section{Academic Career}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
@@ -141,7 +102,7 @@ I am fascinated by planetary atmospheres. In my research, I try to unravel the c
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% AWARDS
+% Awards
 %----------------------------------------------------------------------------------------
 \section{Awards and Scholarships}
 \begin{tabularx}{\linewidth}{@{}lXr@{}}
@@ -156,7 +117,7 @@ I am fascinated by planetary atmospheres. In my research, I try to unravel the c
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-%	PUBLICATIONS
+% Publications
 %----------------------------------------------------------------------------------------
 \section{Publications}
 {\scriptsize Citations\\(refereed in \textbf{bold})}
@@ -165,7 +126,7 @@ I am fascinated by planetary atmospheres. In my research, I try to unravel the c
 \end{itemize}
 
 %----------------------------------------------------------------------------------------
-% CONFERENCES
+% Conferences
 %----------------------------------------------------------------------------------------
 \section{Conferences}
 \subsection*{Invited Talks}
@@ -208,7 +169,7 @@ General Assembly | Vienna, Austria \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% SUPERVISION
+% Supervision
 %----------------------------------------------------------------------------------------
 \section{Supervision}
 I am an integral member of the \href{https://exoclimatology.com}{Exeter Exoplanet Theory Group (EETG)}, and have been actively involved in the supervision of students --- both as a \highlight{lead supervisor} and as a co-supervisor. Undergraduate and Masters students who went on to do an MSc/PhD are marked with *.
@@ -260,7 +221,7 @@ Jun--Aug 2019 & Isobel Parry* \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% TEACHING
+% Teaching
 %----------------------------------------------------------------------------------------
 \section{Teaching}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
@@ -271,7 +232,7 @@ Nov 2016 & \href{https://ueapy.github.io/enveast_python_course}{Python training 
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-%	SKILLS
+% Skills
 %----------------------------------------------------------------------------------------
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
@@ -285,7 +246,7 @@ Document preparation & \LaTeX, Markdown, HTML, CSS, reST
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% TRAINING & EXPERIENCE
+% Training
 %----------------------------------------------------------------------------------------
 \section{Vocational Training}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
@@ -316,6 +277,9 @@ Aug--Sep 2013 & Weather Forecaster \\ & Forecast and Briefing Service | Main Avi
 % Jan--Feb 2012 & Field practice in meteorology | Karel Republic, Russia \\
 \end{tabularx}
 
+%----------------------------------------------------------------------------------------
+% Impact and outreach
+%----------------------------------------------------------------------------------------
 \section{Impact}
 \begin{itemize}[nosep, leftmargin=10pt]
     \item Press Releases
@@ -351,6 +315,9 @@ Aug--Sep 2013 & Weather Forecaster \\ & Forecast and Briefing Service | Main Avi
     % \end{itemize}
 \end{itemize}
 
+%----------------------------------------------------------------------------------------
+% Service
+%----------------------------------------------------------------------------------------
 \section{Academic Community}
 \begin{itemize}[nosep, leftmargin=10pt]
     \item Organisation of Scientific Meetings
@@ -372,22 +339,3 @@ Aug--Sep 2013 & Weather Forecaster \\ & Forecast and Briefing Service | Main Avi
 \end{itemize}
 
 \end{document}
-% \begin{tabularx}{\linewidth}{ @{}l r@{} }
-% \textbf{Designation} & \hfill Mar 2019 - Jan 2021 \\[3.75pt]
-% \multicolumn{2}{@{}X@{}}{
-% \begin{minipage}[t]{\linewidth}
-%     \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-%         \item[--] long long line of blah blah that will wrap when the table fills the column width
-%         \item[--] again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
-%     \end{itemize}
-%     \end{minipage}
-% }
-% \end{tabularx}
-
-% %Projects
-% \section{Projects}
-
-% \begin{tabularx}{\linewidth}{ @{}l r@{} }
-% \textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-% \multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
-% \end{tabularx}
