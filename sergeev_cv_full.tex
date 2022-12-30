@@ -4,14 +4,6 @@
 % Article class because we want to fully customize the page and not use a cv template
 \documentclass[a4paper, 11pt]{article}
 
-% Geometry
-\usepackage[scale=0.9]{geometry}
-% To debug page outer frames
-%\usepackage{showframe}
-
-% Paragraph formatting
-\usepackage{parskip}
-
 % fontspec allows you to use TTF/OTF fonts directly
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
@@ -30,8 +22,24 @@
 \definecolor{exeter_deep_green}{HTML}{007d69}
 \definecolor{exeter_bright_green}{HTML}{00c896}
 \definecolor{exeter_highlight_green}{HTML}{00dca5}
-
 \newcommand{\highlight}[1]{\textbf{\textcolor{exeter_bright_green}{#1}}}
+
+% Geometry
+\usepackage[scale=1.0]{geometry}
+\geometry{a4paper, top=10mm, bottom=10mm, left=10mm, right=10mm, heightrounded, includehead, includefoot}
+
+% Headers
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\thispagestyle{plain}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[C]{\scriptsize\textcolor{exeter_deep_green}{Denis Sergeev's CV\\\thepage~/~\pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0pt}
+
+% Paragraph formatting
+\usepackage{parskip}
 
 % Lists and tables
 \usepackage[inline]{enumitem}
@@ -66,6 +74,9 @@ pdftitle={Denis Sergeev's CV}
 \usepackage{siunitx}
 \sisetup{group-separator={\,}}
 \newcommand{\estval}[1]{$\sim$\pounds\num{#1}}
+
+% To debug page outer frames
+% \usepackage{showframe}
 
 %----------------------------------------------------------------------------------------
 \begin{document}

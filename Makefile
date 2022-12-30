@@ -38,9 +38,7 @@ $(DATA): $(SCRIPTS)/*.py
 $(CV_FULL): $(SRC_HEADER) $(SRC_MAIN) inputs
 	@echo "Make TeX"
 	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
-	# $(BIB) $(basename $(SRC_MAIN)).bcf
-	# $(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
-	# $(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
+	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
 
 .PHONY: clean
 clean:
