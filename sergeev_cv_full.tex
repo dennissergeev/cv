@@ -26,12 +26,11 @@
 
 % Geometry
 \usepackage[scale=1.0]{geometry}
-\geometry{a4paper, top=10mm, bottom=10mm, left=10mm, right=10mm, heightrounded, includehead, includefoot, headheight=18pt}
+\geometry{a4paper, top=10mm, bottom=10mm, left=10mm, right=10mm, heightrounded, includehead, headheight=18pt}
 
 % Headers
 \usepackage{lastpage}
 \usepackage{fancyhdr}
-\thispagestyle{plain}
 \pagestyle{fancy}
 \fancyhead{}
 \fancyfoot{}
@@ -81,6 +80,8 @@ pdftitle={Denis Sergeev's CV}
 
 %----------------------------------------------------------------------------------------
 \begin{document}
+\thispagestyle{empty}
+
 % Needed to keep the tabularx columns stretched over the whole linewidth when using ltablex
 \keepXColumns
 
