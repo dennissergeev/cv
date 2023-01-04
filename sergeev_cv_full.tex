@@ -5,9 +5,11 @@
 \documentclass[a4paper, 11pt]{article}
 
 % fontspec allows you to use TTF/OTF fonts directly
-\usepackage{fontspec}
-\defaultfontfeatures{Ligatures=TeX}
-\setmainfont[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+% \setmainfont[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
+\usepackage{mathspec}
+\setallmainfonts(Digits,Latin)[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
 
 % Icons
 \usepackage{fontawesome5}
@@ -52,7 +54,7 @@
 \titleformat{\section}{\Large\bfseries\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{10pt}{10pt}
 % \titlespacing*{\section}{0pt}{-0.05\baselineskip}{0.75\baselineskip}
-\titlespacing*{\subsection}{0pt}{-1.0\baselineskip}{0.1\baselineskip}
+\titlespacing*{\subsection}{0pt}{-0.75\baselineskip}{0.25\baselineskip}
 
 % Links
 \usepackage{url}
@@ -180,8 +182,7 @@ Meteorological Society Student Conference | Birmingham, UK \\
 Mar 2015 & Structure and dynamics of a shear-line polar low during a cold-air outbreak over the Norwegian Sea \\ & Dynamics of Atmosphere-Ice-Ocean Interactions in the High Latitudes workshop | Rosendal, Norway \\
 May 2014 & Numerical modelling of polar mesocyclones dynamics diagnosed by the energy budget \\ & EGU General Assembly | Vienna, Austria \\
 Apr 2013 & Impact of subgrid-scale vegetation heterogeneity on the carbon cycle \\ & EGU General Assembly | Vienna, Austria \\
-Apr 2013 & Numerical modelling of polar mesocyclones generation mechanisms \\ & EGU
-General Assembly | Vienna, Austria \\
+Apr 2013 & Numerical modelling of polar mesocyclones generation mechanisms \\ & EGU General Assembly | Vienna, Austria \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
