@@ -17,6 +17,8 @@ cv: $(CV_FULL)
 
 inputs: $(METRICS_FIG) $(SRC_STATS) $(SRC_PUBS)
 
+data: $(DATA)
+
 $(METRICS_FIG): $(DATA)
 	@echo "Make the figure"
 	$(SCRIPTS)/plot_metrics.py --year_start 2014
