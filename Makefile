@@ -13,6 +13,8 @@ DATA = \
 METRICS_FIG = images/sergeev_ads_metrics.pdf
 SCRIPTS = scripts
 
+all: cv
+
 cv: $(CV_FULL)
 
 inputs: $(METRICS_FIG) $(SRC_STATS) $(SRC_PUBS)

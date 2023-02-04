@@ -12,23 +12,25 @@ from paths import bibcodes_file
 
 token = os.getenv("ADS_API_KEY")
 LIB_URL = "https://api.adsabs.harvard.edu/v1/biblib/libraries"
+LIBRARY_ID = "2IT653szTA-gYw3vyA-9Sw"
 
 
-def fetch(clobber=False):
+def fetch(clobber=False, library_id=LIBRARY_ID):
     """Fetch bibcodes from the NASA ADS private library."""
     if clobber:
         print("Fetching bibcodes from ADS.")
         # Get library id
-        req = requests.get(
-            LIB_URL,
-            headers={"Authorization": f"Bearer {token}"},
-        )
-        library_id = req.json()["libraries"][0]["id"]
+        # req = requests.get(
+        #     LIB_URL,
+        #     headers={"Authorization": f"Bearer {token}"},
+        # )
+        # library_id = req.json()["libraries"][0]["id"]
 
         # Get the list of bibcodes in the library
         req = requests.get(
             f"{LIB_URL}/{library_id}",
             headers={"Authorization": f"Bearer {token}"},
+            params={"rows": 1000},
         )
         with bibcodes_file.open("w") as f_json:
             json.dump(req.json(), f_json)
