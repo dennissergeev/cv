@@ -31,9 +31,9 @@ def format_publication(pub, my_name):
     else:
         cites = cit_count
     if pub["doctype"] == "article":
-        entry += rf"\item[\small{{\highlight{{\textbf{{{cites}}}}}}}] "
+        entry += rf"\item[\small{{\highlightdark{{\textbf{{{cites}}}}}}}] "
     else:
-        entry += rf"\item[\small{{\highlight{{{cites}}}}}] "
+        entry += rf"\item[\small{{\highlightdark{{{cites}}}}}] "
 
     # Format the author list
     authors = []
