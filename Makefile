@@ -12,6 +12,7 @@ DATA = \
     data/publications.json
 METRICS_FIG = images/sergeev_ads_metrics.pdf
 SCRIPTS = scripts
+JOURNALS = static/journal_abbr.json
 
 all: cv
 
@@ -29,7 +30,7 @@ $(SRC_STATS): $(DATA)
 	@echo "Make stats"
 	$(SCRIPTS)/write_stats.py
 
-$(SRC_PUBS): $(DATA)
+$(SRC_PUBS): $(DATA) $(JOURNALS)
 	@echo "Make pubs"
 	$(SCRIPTS)/format_publications.py
 

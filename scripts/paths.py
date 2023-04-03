@@ -11,6 +11,10 @@ bibcodes_file = data / "bibcodes.json"
 metrics_file = data / "metrics.json"
 publications_file = data / "publications.json"
 
+# Other static data
+static = root / "static"
+journal_abbr_file = static / "journal_abbr.json"
+
 # Images directory
 images = root / "images"
 

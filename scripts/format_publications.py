@@ -3,27 +3,16 @@
 """Format publication entries."""
 import json
 
-from paths import publications_file, pubs_formatted
-
-JOURNAL_ABBR = {
-    "Astronomy and Astrophysics": r"A\&A",
-    "Bulletin of the American Meteorological Society": "BAMS",
-    "Dynamics of Atmospheres and Oceans": "Dyn. Atm. Ocean.",
-    "Geoscientific Model Development": "Geosci. Model Dev.",
-    "Izvestiya Atmospheric and Oceanic Physics": "Izv. Atmos. Ocean. Phy.",
-    "Journal of Climate": "J. Cli.",
-    "Monthly Notices of the Royal Astronomical Society": "MNRAS",
-    "Monthly Weather Review": "Mon. Wea. Rev.",
-    "Quarterly Journal of the Royal Meteorological Society": "Q. J. R. Meteorol. Soc.",  # noqa
-    "The Astrophysical Journal": "ApJ",
-    "The Planetary Science Journal": "Planet. Sci. J.",
-}
+from paths import journal_abbr_file, publications_file, pubs_formatted
 
 
 def format_publication(pub, my_name):
     """Load publications from a JSON file and format them in TeX."""
-    entry = ""
+    # Load journal abbreviations
+    with journal_abbr_file.open("r") as f_json:
+        JOURNAL_ABBR = json.load(f_json)
 
+    entry = ""
     # Format the number of citations
     cit_count = pub["citation_count"]
     if cit_count == 0:
