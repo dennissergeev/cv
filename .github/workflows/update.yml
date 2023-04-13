@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: "00 09 * * *"
+    - cron: "00 08 * * *"
 
 jobs:
   build_latex:
