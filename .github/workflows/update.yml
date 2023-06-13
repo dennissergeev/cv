@@ -5,10 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: "00 08 * * *"
+    - cron: "00 06 * * *"
 
 jobs:
-  build_latex:
+  build_cv:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
