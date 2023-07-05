@@ -24,9 +24,11 @@
 \definecolor{exeter_deep_green}{HTML}{007d69}
 \definecolor{exeter_bright_green}{HTML}{00c896}
 \definecolor{exeter_highlight_green}{HTML}{00dca5}
+\definecolor{exeter_stone_grey}{HTML}{888b8d}
 \newcommand{\highlightbold}[1]{\textbf{\textcolor{exeter_bright_green}{#1}}}
 \newcommand{\highlight}[1]{\textcolor{exeter_bright_green}{#1}}
 \newcommand{\highlightdark}[1]{\textcolor{exeter_deep_green}{#1}}
+\newcommand{\grey}[1]{\textcolor{exeter_stone_grey}{#1}}
 
 % Geometry
 \usepackage[scale=1.0]{geometry}
@@ -50,6 +52,22 @@
 \usepackage{ltablex}
 \usepackage{multicol}
 \usepackage{multirow}
+
+
+\makeatletter
+\newcommand*{\@rowstyle}{}
+\newcommand*{\rowstyle}[1]{% sets the style of the next row
+  \gdef\@rowstyle{#1}%
+  \@rowstyle\ignorespaces%
+}
+\newcolumntype{=}{% resets the row style
+  >{\gdef\@rowstyle{}}%
+}
+\newcolumntype{+}{% adds the current row style to the next column
+  >{\@rowstyle}%
+}
+\makeatother
+
 
 % Section formatting
 \usepackage{titlesec}
@@ -143,7 +161,7 @@ In my research, I try to unravel the complexity of planetary atmospheres by usin
 % Publications
 %----------------------------------------------------------------------------------------
 \section{Publications}
-{\scriptsize\highlightdark{Citations\\(refereed in \textbf{bold})}}
+{\scriptsize\highlightdark{Citations\\\grey{(preprints in \textbf{grey})}}}
 \begin{itemize}
 \input{pubs}
 \end{itemize}
@@ -153,7 +171,11 @@ In my research, I try to unravel the complexity of planetary atmospheres by usin
 %----------------------------------------------------------------------------------------
 \section{Conferences}
 \subsection*{Invited Talks}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
+\begin{tabularx}{\linewidth}{@{}=l +X@{}}
+\rowstyle{\color{exeter_stone_grey}}
+Jul 2023 & Simulations of idealised 3D atmospheric flows on terrestrial planets using LFRic-Atmosphere \\
+\rowstyle{\color{exeter_stone_grey}}
+& NASA GISS Seminar | Online \\
 Mar 2023 & First results of using LFRic for exoplanet climate modelling \\ & NIWA Seminar | Wellington, New Zealand \\
 Feb 2023 & Atmospheric dynamics and chemistry on exoplanets \\ & UQ Astro Group Meeting | Brisbane, Australia \\
 Feb 2023 & \href{https://youtu.be/g4d-ibZvBIY}{Atmospheric dynamics and chemistry on exoplanets} \\ & UniSQ Exoplanet Group Seminar | Brisbane, Australia \\
@@ -252,9 +274,16 @@ Jun--Aug 2019 & Isobel Parry* \\
 %----------------------------------------------------------------------------------------
 % Teaching
 %----------------------------------------------------------------------------------------
-\section{Teaching}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Jul 2023 & Sustainability Summer School \\ & Lecturer | University of Exeter \\
+\section{Teaching and Mentoring}
+\begin{tabularx}{\linewidth}{@{}=l +X@{}}
+\rowstyle{\color{exeter_stone_grey}}
+Jul 2023 & \href{https://academy.climatematch.io/}{Climatematch Academy} \\
+\rowstyle{\color{exeter_stone_grey}}
+& Mentor | Online \\
+\rowstyle{\color{exeter_stone_grey}}
+Jul 2023 & Sustainability Summer School \\
+\rowstyle{\color{exeter_stone_grey}}
+& Lecturer | University of Exeter \\
 Jun 2023 & ExoSLAM \\ & Co-chair and Lecturer | University of Exeter \\
 Jan 2018 & \href{https://ueapy.github.io/pythoncourse2018}{ECR course ``Introduction to Python in Environmental Sciences''} \\ & Course creator \& leader | University of East Anglia \\
 2015--2017 & Modelling Environmental Processes; Meteorology; Numerical Skills \\ & Teaching assistant | University of East Anglia \\

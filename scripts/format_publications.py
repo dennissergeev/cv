@@ -19,10 +19,13 @@ def format_publication(pub, my_name):
         cites = r"\textbullet"
     else:
         cites = cit_count
-    if pub["doctype"] == "article":
+
+    refereed = pub["doctype"] == "article"
+    if refereed:
         entry += rf"\item[\small{{\highlightdark{{\textbf{{{cites}}}}}}}] "
     else:
-        entry += rf"\item[\small{{\highlightdark{{{cites}}}}}] "
+        entry += rf"\item[\small{{\grey{{\textbf{{{cites}}}}}}}] "
+        entry += r"\grey{"
 
     # Format the author list
     authors = []
@@ -75,6 +78,9 @@ def format_publication(pub, my_name):
             entry += f", {pub['page'][0]}"
         else:
             entry += f", {JOURNAL_ABBR.get(journal, journal)}"
+
+    if not refereed:
+        entry += "}"  # to close \grey{
 
     return entry
 
