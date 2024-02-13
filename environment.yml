@@ -7,4 +7,5 @@ dependencies:
   - numpy
   - pandas
   - pip
+  - pyarrow
   - requests
