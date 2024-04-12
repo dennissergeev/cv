@@ -24,8 +24,8 @@ def format_publication(pub, my_name):
     if refereed:
         entry += rf"\item[\small{{\highlightdark{{\textbf{{{cites}}}}}}}] "
     else:
-        entry += rf"\item[\small{{\grey{{\textbf{{{cites}}}}}}}] "
-        entry += r"\grey{"
+        entry += rf"\item[\small{{\tbc{{\textbf{{{cites}}}}}}}] "
+        entry += r"\tbc{"
 
     # Format the author list
     authors = []
@@ -80,7 +80,7 @@ def format_publication(pub, my_name):
             entry += f", {JOURNAL_ABBR.get(journal, journal)}"
 
     if not refereed:
-        entry += "}"  # to close \grey{
+        entry += "}"  # to close \tbc{
 
     return entry
 
