@@ -2,6 +2,7 @@
 *.pdf
 stats.tex
 pubs.tex
+pubs_short.tex
 images/sergeev_ads_metrics.pdf
 data/*.json
 *.ipynb

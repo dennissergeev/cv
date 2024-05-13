@@ -21,3 +21,4 @@ images = root / "images"
 # TeX files
 stats_file = root / "stats.tex"
 pubs_formatted = root / "pubs.tex"
+pubs_formatted_short = root / "pubs_short.tex"

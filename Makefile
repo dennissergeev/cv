@@ -2,10 +2,12 @@
 TEX = xelatex
 BIB = biber
 CV_FULL = sergeev_cv_full.pdf
-SRC_MAIN = sergeev_cv_full.tex
+CV_SHORT = sergeev_cv_short.pdf
+SRC_FULL = sergeev_cv_full.tex
+SRC_SHORT = sergeev_cv_short.tex
 SRC_HEADER = header.tex
 SRC_STATS = stats.tex
-SRC_PUBS = pubs.tex
+SRC_PUBS = pubs.tex pubs_short.tex
 DATA = \
     data/bibcodes.json \
     data/metrics.json \
@@ -14,11 +16,13 @@ METRICS_FIG = images/sergeev_ads_metrics.pdf
 SCRIPTS = scripts
 JOURNALS = static/journal_abbr.json
 
-all: cv
+all: cv cv_short
 
 cv: $(CV_FULL)
 
-inputs: $(METRICS_FIG) $(SRC_STATS) $(SRC_PUBS)
+cv_short: $(CV_SHORT)
+
+stats_metrics: $(METRICS_FIG) $(SRC_STATS)
 
 data: $(DATA)
 
@@ -40,17 +44,23 @@ $(DATA): $(SCRIPTS)/*.py
 	$(SCRIPTS)/get_metrics.py --clobber
 	$(SCRIPTS)/get_publications.py --clobber
 
-$(CV_FULL): $(SRC_HEADER) $(SRC_MAIN) inputs
+$(CV_FULL): $(SRC_HEADER) $(SRC_FULL) $(SRC_PUBS) stats_metrics
+	@echo "Make TeX"
+	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
+	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
+
+$(CV_SHORT): $(SRC_HEADER) $(SRC_SHORT) $(SRC_PUBS) stats_metrics
 	@echo "Make TeX"
 	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
 	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
 
 .PHONY: clean
 clean:
-	@echo "Remove temporary TeX files"
+	@echo "Remove temporary TeX files and data"
 	-rm -f *.aux *.bbl *.bcf *.blg *.log *.out *.synctex.gz *.xml
 	-rm -f $(DATA)
 	-rm -f $(METRICS_FIG)
 	-rm -f $(SRC_STATS)
 	-rm -f $(SRC_PUBS)
 	-rm -f $(CV_FULL)
+	-rm -f $(CV_SHORT)
