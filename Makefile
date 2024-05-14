@@ -22,7 +22,7 @@ cv: $(CV_FULL)
 
 cv_short: $(CV_SHORT)
 
-stats_metrics: $(METRICS_FIG) $(SRC_STATS)
+inputs: $(METRICS_FIG) $(SRC_STATS) $(SRC_PUBS)
 
 data: $(DATA)
 
@@ -44,12 +44,12 @@ $(DATA): $(SCRIPTS)/*.py
 	$(SCRIPTS)/get_metrics.py --clobber
 	$(SCRIPTS)/get_publications.py --clobber
 
-$(CV_FULL): $(SRC_HEADER) $(SRC_FULL) $(SRC_PUBS) stats_metrics
+$(CV_FULL): $(SRC_HEADER) $(SRC_FULL) $(SRC_PUBS) inputs
 	@echo "Make TeX"
 	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
 	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
 
-$(CV_SHORT): $(SRC_HEADER) $(SRC_SHORT) $(SRC_PUBS) stats_metrics
+$(CV_SHORT): $(SRC_HEADER) $(SRC_SHORT) $(SRC_PUBS) inputs
 	@echo "Make TeX"
 	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
 	$(TEX) $(filter-out $<,$^) -interaction=nonstopmode -halt-on-error
