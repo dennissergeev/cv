@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """Format publication entries."""
 import json
+import re
 
 from paths import (
     journal_abbr_file,
@@ -9,6 +10,25 @@ from paths import (
     pubs_formatted,
     pubs_formatted_short,
 )
+
+
+def replace_subscripts_and_superscripts(text):
+    """Replace SUB / SUPER in NASA ADS titles."""
+    # Regex pattern to match <SUB>...</SUB> and <SUPER>...</SUPER>
+    pattern = re.compile(r"<(SUB|SUPER)>(.*?)</\1>", re.IGNORECASE)
+
+    # Replacement function that wraps the content
+    # in \textsubscript{} or \textsuperscript{}
+    def replacement(match):
+        tag = match.group(1).lower()
+        content = match.group(2)
+        if tag == "sub":
+            return f"\\textsubscript{{{content}}}"
+        elif tag == "super":
+            return f"\\textsuperscript{{{content}}}"
+
+    # Perform the substitution
+    return pattern.sub(replacement, text)
 
 
 def format_publication(pub, my_name):
@@ -64,6 +84,7 @@ def format_publication(pub, my_name):
 
     # Format the title and URL
     title = pub["title"][0]
+    title = replace_subscripts_and_superscripts(title)
     if doi := pub.get("doi"):
         link = rf"https://doi.org/{doi[0]}"
     elif url := pub.get("url"):
