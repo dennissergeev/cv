@@ -52,13 +52,20 @@ def plot_total_cits(metrics, ax=None):
     ax.yaxis.set_major_locator(MaxNLocator(integer=True, nbins=5))
 
 
-def plot_indices(metrics, ax=None):
+def plot_indices(metrics, ax=None, mask_zero=False):
     """Plot indices from ADS metrics JSON data."""
     # Convert data from dict-like to pandas series
     h_series = pd.Series(metrics["time series"]["h"])
     i10_series = pd.Series(metrics["time series"]["i10"])
     h_series.index = h_series.index.astype(int)
     i10_series.index = i10_series.index.astype(int)
+    if mask_zero:
+        i10_mask = i10_series > 0
+        i10sum = i10_mask.cumsum()
+        last_zero_value_pos = i10sum.loc[i10sum == 1].index[0] - 1
+        i10_mask.at[last_zero_value_pos] = True
+        i10_series = i10_series.where(i10_mask)
+        h_series = h_series.where(h_series > 0)
     # Make a plot
     if ax is None:
         ax = plt.axes()
@@ -80,7 +87,7 @@ def plot_indices(metrics, ax=None):
     ax.yaxis.set_major_locator(MaxNLocator(integer=True, nbins=5))
 
 
-def make_plots(year_start=None, style="default"):
+def make_plots(year_start=None, style="default", mask_zero=False):
     """Make the plots."""
     # Load pre-fetched data
     with metrics_file.open("r") as f_json:
@@ -92,7 +99,7 @@ def make_plots(year_start=None, style="default"):
         )
         plot_total_pubs(metrics=metrics, ax=axs[0])
         plot_total_cits(metrics=metrics, ax=axs[1])
-        plot_indices(metrics=metrics, ax=axs[2])
+        plot_indices(metrics=metrics, ax=axs[2], mask_zero=mask_zero)
 
         for ax in axs:
             if year_start is not None:
@@ -102,6 +109,11 @@ def make_plots(year_start=None, style="default"):
                 )
                 ax.xaxis.set_major_locator(MaxNLocator(integer=True, nbins=4))
             plt.setp(ax.get_xticklabels(), rotation=30)
+            # Remove 0 from the y-axis
+            ax.set_ylim(ymin=0)
+            yticks = list(ax.get_yticks())
+            yticks.remove(0.0)
+            ax.set_yticks(yticks)
         fig.align_ylabels()
         fig.align_xlabels()
         fig.savefig(images / "sergeev_ads_metrics.pdf", bbox_inches="tight")
@@ -113,4 +125,4 @@ if __name__ == "__main__":
         year_start = int(sys.argv[2])
     else:
         year_start = None
-    make_plots(year_start=year_start, style="ggplot")
+    make_plots(year_start=year_start, style="ggplot", mask_zero=True)
