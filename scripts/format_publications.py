@@ -39,7 +39,7 @@ def format_publication(pub, my_name):
 
     entry = ""
     # Format the number of citations
-    cit_count = pub["citation_count"]
+    cit_count = pub.get("citation_count", 0)
     if cit_count == 0:
         cites = r"\textbullet"
     else:
