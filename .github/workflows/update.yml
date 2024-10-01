@@ -27,7 +27,7 @@ jobs:
           ADS_API_KEY: ${{ secrets.ADS_API_KEY }}
 
       - name: Compile LaTeX document
-        uses: xu-cheng/texlive-action/full@v2
+        uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
             apk add make
