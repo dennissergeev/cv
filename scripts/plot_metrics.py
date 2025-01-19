@@ -13,7 +13,7 @@ from matplotlib.ticker import MaxNLocator
 from paths import metrics_file, images
 
 
-COLORS = ["#022020", "#003c3c", "#007d69", "#00c896", "#00dca5"]
+COLORS = ["#B01C2E", "#0CC6DE", "#002F5F"]
 
 
 def plot_total_pubs(metrics, ax=None):
@@ -47,7 +47,7 @@ def plot_total_cits(metrics, ax=None):
     # Make a plot
     if ax is None:
         ax = plt.axes()
-    ax.plot(cit_series.index, cit_series, marker="*", color=COLORS[3], ms=6)
+    ax.plot(cit_series.index, cit_series, marker="*", color=COLORS[1], ms=6)
     ax.set_ylabel("Citations")
     ax.yaxis.set_major_locator(MaxNLocator(integer=True, nbins=5))
 
@@ -70,13 +70,13 @@ def plot_indices(metrics, ax=None, mask_zero=False):
     if ax is None:
         ax = plt.axes()
     ax.plot(
-        h_series.index, h_series, marker="X", color=COLORS[2], label="h", ms=5
+        h_series.index, h_series, marker="X", color=COLORS[1], label="h", ms=5
     )
     ax.plot(
         i10_series.index,
         i10_series,
         marker="D",
-        color=COLORS[4],
+        color=COLORS[2],
         label="i10",
         linestyle="--",
         dash_capstyle="round",

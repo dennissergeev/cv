@@ -19,16 +19,14 @@
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames, dvipsnames]{xcolor}
-\definecolor{exeter_night_green}{HTML}{022020}
-\definecolor{exeter_dark_green}{HTML}{003c3c}
-\definecolor{exeter_deep_green}{HTML}{007d69}
-\definecolor{exeter_bright_green}{HTML}{00c896}
-\definecolor{exeter_highlight_green}{HTML}{00dca5}
-\definecolor{exeter_stone_grey}{HTML}{888b8d}
-\newcommand{\highlightbold}[1]{\textbf{\textcolor{exeter_bright_green}{#1}}}
-\newcommand{\highlight}[1]{\textcolor{exeter_bright_green}{#1}}
-\newcommand{\highlightdark}[1]{\textcolor{exeter_deep_green}{#1}}
-\newcommand{\tbc}[1]{\textcolor{exeter_stone_grey}{#1}}
+\definecolor{university_red}{HTML}{B01C2E}
+\definecolor{bright_blue}{HTML}{0CC6DE}
+\definecolor{dark_blue}{HTML}{002F5F}
+\definecolor{cool_grey}{HTML}{E5E6E5}
+\newcommand{\highlightbold}[1]{\textbf{\textcolor{bright_blue}{#1}}}
+\newcommand{\highlight}[1]{\textcolor{bright_blue}{#1}}
+\newcommand{\highlightdark}[1]{\textcolor{dark_blue}{#1}}
+\newcommand{\tbc}[1]{\textcolor{cool_grey}{#1}}
 
 % Geometry
 \usepackage[scale=1.0]{geometry}
@@ -40,7 +38,7 @@
 \pagestyle{fancy}
 \fancyhead{}
 \fancyfoot{}
-\fancyhead[C]{\scriptsize\textcolor{exeter_deep_green}{Denis Sergeev's CV\\\thepage~/~\pageref{LastPage}}}
+\fancyhead[C]{\scriptsize\textcolor{dark_blue}{Denis Sergeev's CV\\\thepage~/~\pageref{LastPage}}}
 \renewcommand{\headrulewidth}{0pt}
 
 % Paragraph formatting
@@ -82,8 +80,8 @@
 \hypersetup{
 colorlinks,
 breaklinks,
-urlcolor=exeter_deep_green,
-linkcolor=exeter_deep_green,
+urlcolor=dark_blue,
+linkcolor=dark_blue,
 pdfauthor={Denis Sergeev},
 pdftitle={Denis Sergeev's CV}
 }
