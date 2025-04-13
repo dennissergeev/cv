@@ -28,21 +28,21 @@ data: $(DATA)
 
 $(METRICS_FIG): $(DATA)
 	@echo "Make the figure"
-	$(SCRIPTS)/plot_metrics.py --year_start 2014
+	pixi run $(SCRIPTS)/plot_metrics.py --year_start 2014
 
 $(SRC_STATS): $(DATA)
 	@echo "Make stats"
-	$(SCRIPTS)/write_stats.py
+	pixi run $(SCRIPTS)/write_stats.py
 
 $(SRC_PUBS): $(DATA) $(JOURNALS)
 	@echo "Make pubs"
-	$(SCRIPTS)/format_publications.py
+	pixi run $(SCRIPTS)/format_publications.py
 
 $(DATA): $(SCRIPTS)/*.py
 	@echo "Make data"
-	$(SCRIPTS)/get_bibcodes.py --clobber
-	$(SCRIPTS)/get_metrics.py --clobber
-	$(SCRIPTS)/get_publications.py --clobber
+	pixi run $(SCRIPTS)/get_bibcodes.py --clobber
+	pixi run $(SCRIPTS)/get_metrics.py --clobber
+	pixi run $(SCRIPTS)/get_publications.py --clobber
 
 $(CV_FULL): $(SRC_HEADER) $(SRC_FULL) $(SRC_PUBS) inputs
 	@echo "Make TeX"
