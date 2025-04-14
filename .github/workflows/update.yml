@@ -30,7 +30,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/texlive-action@v2
         with:
-          scheme: small
+          scheme: full
           run: |
             apk add make
             make cv
