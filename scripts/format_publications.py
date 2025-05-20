@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Format publication entries."""
+
 import json
 import re
 
@@ -31,27 +32,14 @@ def replace_subscripts_and_superscripts(text):
     return pattern.sub(replacement, text)
 
 
-def format_publication(pub, my_name):
+def format_publication(pub, idx, my_name):
     """Load publications from a JSON file and format them in TeX."""
     # Load journal abbreviations
     with journal_abbr_file.open("r") as f_json:
         JOURNAL_ABBR = json.load(f_json)
+    refereed = pub["doctype"] == "article"
 
     entry = ""
-    # Format the number of citations
-    cit_count = pub.get("citation_count", 0)
-    if cit_count == 0:
-        cites = r"\textbullet"
-    else:
-        cites = cit_count
-
-    refereed = pub["doctype"] == "article"
-    if refereed:
-        entry += rf"\item[\small{{\highlightdark{{\textbf{{{cites}}}}}}}] "
-    else:
-        entry += rf"\item[\small{{\tbc{{\textbf{{{cites}}}}}}}] "
-        entry += r"\tbc{"
-
     # Format the author list
     authors = []
     my_pos = -1
@@ -105,10 +93,19 @@ def format_publication(pub, my_name):
         else:
             entry += f", {JOURNAL_ABBR.get(journal, journal)}"
 
-    if not refereed:
-        entry += "}"  # to close \tbc{
+    # Format the number of citations
+    cit_count = pub.get("citation_count", 0)
+    if cit_count == 0:
+        cites = r"\textbullet"
+    else:
+        cites = cit_count
 
-    return entry
+    if refereed:
+        line = rf"\small{{\highlightdark{{{idx}}}}} & {entry} & \small{{\highlightdark{{\textbf{{{cites}}}}}}} \\"
+    else:
+        line = rf"\small{{\tbc{{{idx}}}}} & \tbc{{{entry}}} & \small{{\tbc{{\textbf{{{cites}}}}}}} \\"
+
+    return line
 
 
 if __name__ == "__main__":
@@ -129,11 +126,14 @@ if __name__ == "__main__":
     with publications_file.open("r") as f_json:
         pubs = json.load(f_json)["docs"]
     pubs = sorted(pubs, key=lambda x: x["pubdate"], reverse=True)
+    n_pub = len(pubs)
 
     with pubs_formatted.open("w") as f_tex:
-        for pub in pubs:
-            f_tex.write(format_publication(pub, my_name=last_name) + "\n")
+        for idx, pub in enumerate(pubs):
+            f_tex.write(format_publication(pub, n_pub - idx, my_name=last_name) + "\n")
     with pubs_formatted_short.open("w") as f_tex:
-        for pub in pubs:
+        for idx, pub in enumerate(pubs):
             if pub["bibcode"] in select_bibcodes:
-                f_tex.write(format_publication(pub, my_name=last_name) + "\n")
+                f_tex.write(
+                    format_publication(pub, n_pub - idx, my_name=last_name) + "\n"
+                )
