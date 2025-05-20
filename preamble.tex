@@ -3,7 +3,8 @@
 % \defaultfontfeatures{Ligatures=TeX}
 % \setmainfont[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
 \usepackage{mathspec}
-\setallmainfonts(Digits,Latin)[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
+% \setallmainfonts(Digits,Latin)[Path=fonts/, BoldFont=Outfit-Medium]{Outfit-Light}
+\renewcommand{\familydefault}{\sfdefault}
 
 % Icons
 \usepackage{fontawesome5}
@@ -65,9 +66,8 @@
 % Section formatting
 \usepackage{titlesec}
 \titleformat{\section}{\Large\bfseries\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
-% \titlespacing*{\section}{0pt}{-0.05\baselineskip}{0.75\baselineskip}
-\titlespacing*{\subsection}{0pt}{-0.75\baselineskip}{0.25\baselineskip}
+\titlespacing{\section}{0pt}{5pt}{0pt}
+\titlespacing*{\subsection}{0pt}{5pt}{0pt}
 
 % Links
 \usepackage{url}
