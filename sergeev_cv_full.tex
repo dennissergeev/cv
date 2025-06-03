@@ -1,53 +1,52 @@
-%----------------------------------------------------------------------------------------
-% Curriculum Vitae Main TeX Document
-%----------------------------------------------------------------------------------------
-% Article class because we want to fully customize the page and not use a cv template
 \documentclass[a4paper, 11pt]{article}
 
 \input{preamble}
 
-%----------------------------------------------------------------------------------------
+
 \begin{document}
 \thispagestyle{empty}
 
 % Needed to keep the tabularx columns stretched over the whole linewidth when using ltablex
 \keepXColumns
 
-%----------------------------------------------------------------------------------------
-% Header
-%----------------------------------------------------------------------------------------
 \input{header}
 
-%----------------------------------------------------------------------------------------
-% Summary
-%----------------------------------------------------------------------------------------
 % \section{About}
 % I am fascinated by atmospheric phenomena on different planets.
 % I am especially interested in the role of convection and clouds in planetary climates and how cloud processes affect the habitability of terrestrial exoplanets.
 % In my research, I try to unravel the complexity of planetary atmospheres by using 3D climate models.
-\section{Research Interests}
-\vspace{10pt}
-Planetary Climates\sep Exoplanets\sep Atmospheric Convection\sep Cloud Microphysics\sep General Circulation Models
+% \section{Research Interests}
+% \vspace{10pt}
+% Planetary Climates\sep Exoplanets\sep Atmospheric Convection\sep Cloud Microphysics\sep General Circulation Models
 
-%----------------------------------------------------------------------------------------
-% Education and experience
-%----------------------------------------------------------------------------------------
-\section{Academic Career}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Jan 2025--Present  & Lecturer in Astrophysics, School of Physics, \textbf{University of Bristol} \\
-Sep 2021--Dec 2024 & Postdoctoral Researcher, Department of Physics \& Astronomy, \textbf{University of Exeter} \\
-Sep 2018--Aug 2021 & Postdoctoral Researcher, Department of Mathematics \& Statistics, \textbf{University of Exeter} \\
-Oct 2014--Aug 2018 & PhD in Meteorology, School of Environmental Sciences, \textbf{University of East Anglia} \\
-& Supervisors: Ian A. Renfrew, Thomas Spengler, Stephen Dorling \\
-& Thesis title (shortened): \href{https://ueaeprints.uea.ac.uk/id/eprint/68204/}{``Characteristics of Polar Lows in the Nordic Seas''} \\ %  and the Impact of Orography and Sea Ice on Their Development
-Sep 2009--May 2014 & Specialist Diploma in Meteorology \& Climatology (1\textsuperscript{st} class equiv.), \textbf{Moscow State University}  \\
-& Supervisor: Victor Stepanenko \\
-& Thesis title: \href{https://figshare.com/articles/thesis/SergeevDE_diploma_pdf/5326846/1}{``Idealised Numerical Modelling of Polar Mesocyclone Dynamics''}\\
+
+\section{Career history}
+\begin{tabularx}{\linewidth}{@{}r X@{}}
+Jan 2025--now  & \textbf{Lecturer in Astrophysics}\\
+& School of Physics, University of Bristol \\
+Sep 2021--Dec 2024 & \textbf{Postdoctoral Researcher}\\
+& Project: Exascale Exoplanet Modelling\\
+& Department of Physics \& Astronomy, University of Exeter \\
+Sep 2018--Aug 2021 & \textbf{Postdoctoral Researcher} \\
+& Project: Climate Modelling of Rocky Exoplanets\\
+& Department of Mathematics \& Statistics, University of Exeter
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-% Awards
-%----------------------------------------------------------------------------------------
+\vspace{-10pt}
+
+\section{Academic Qualifications}
+\begin{tabularx}{\linewidth}{@{}r X@{}}
+Oct 2014--Aug 2018 & \textbf{PhD in Meteorology}\\
+& Thesis title (shortened): `Characteristics of Polar Lows in the Nordic Seas'~\href{https://ueaeprints.uea.ac.uk/id/eprint/68204/}{\link} \\ %  and the Impact of Orography and Sea Ice on Their Development
+& School of Environmental Sciences, University of East Anglia \\
+& Supervisors: Ian A. Renfrew, Thomas Spengler, Stephen Dorling \\
+Sep 2009--May 2014 & \textbf{Specialist Diploma (1\textsuperscript{st} class)} \\
+& Thesis title: `Idealised Numerical Modelling of Polar Mesocyclone Dynamics'~\href{https://figshare.com/articles/thesis/SergeevDE_diploma_pdf/5326846/1}{\link}\\
+& Department of Meteorology and Climatology, Moscow State University  \\
+& Supervisor: Victor Stepanenko
+\end{tabularx}
+
+
 \section{Funding and Awards}
 \begin{tabularx}{\linewidth}{@{}lXr@{}}
 \multicolumn{2}{@{}l}{\highlightbold{Direct Funding, PI}} & \highlightbold{Est. Total Value} \\
@@ -67,54 +66,76 @@ Sep 2009--May 2014 & Specialist Diploma in Meteorology \& Climatology (1\textsup
 2023 & JWST: 49.21 Primary Spacecraft Hours in Cycle 2 (\href{https://www.stsci.edu/jwst/science-execution/program-information?id=3838}{GO 3838}, PI: J. Kirk) & \textbullet \\
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-% Publications
-%----------------------------------------------------------------------------------------
+
+\section{Research Interests}
+\vspace{-5pt}
+\begin{tabularx}{\linewidth}{@{}Xl@{}}
+& {\scriptsize Publications (see below):}\\
+\noindent\highlightbold{Atmospheric aerosols:} & \no17, 20, 22, 24, 27, 29 \\
+\sep How do clouds, hazes and dust shape planetary climates? & \\
+%
+\noindent\highlightbold{Atmospheric convection on exoplanets:} & \no8, 17, 30, 33\\
+\sep How does convection shape global energy redistribution? & \\
+%
+\noindent\highlightbold{Extraterrestrial lightning:} & \no19, 33 \\
+\sep How is lightning generated on exoplanets and can we detect it? & \\
+%
+\noindent\highlightbold{Atmospheric dynamics on Earth and other planets:} & \no2, 3, 4, 5, 7, 10, 11, 13, 14, 16 \\
+\sep How do wind jets and cyclones form in planetary atmospheres? & \\
+%
+\noindent\highlightbold{Planet formation:}
+& \no25, 28, 31, 32, 33\\
+\sep How does atmospheric composition relate to the planet's history? & \\
+%
+\noindent\highlightbold{Model development and intercomparison:} & \no12, 15, 16, 17, 18, 23, 30 \\
+\sep How do we build robust and reproducible exoplanet models? & \\
+%
+\end{tabularx}
+
+
 \section{Publications}
 \begin{tabularx}{\linewidth}{@{}rXl@{}}
-& {\scriptsize\tbc{(preprints in \textbf{grey})}} & {\scriptsize\highlightdark{Citations}}\\
+\no & {\scriptsize\tbc{(preprints in \textbf{grey})}} & {\scriptsize\highlightdark{Citations}}\\
 \input{pubs}
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-% Conferences
-%----------------------------------------------------------------------------------------
+
 \section{Conferences and Seminars}
 \vspace{10pt}
 \subsection*{Invited Talks (14)}
 \begin{tabularx}{\linewidth}{@{}=l +X@{}}
 \tbc{Jul 2025} & \tbc{TBC} \\ & \tbc{McGill University | Montreal, Canada} \\
-\tbc{Jun 2025} & \tbc{LFRic for other planets} \\ & \tbc{Durham HPC Days | Durham, UK} \\
+Jun 2025 & Atmospheric dynamics on other planets~\href{https://durham.readthedocs.io/en/latest/hpcdays/workshops.html}{\link} \\ & Durham HPC Days | Durham, UK \\
 Feb 2025 & Exoplanet climate modelling with LFRic \\ & University of East Anglia | Norwich, UK \\
 May 2024 & 3D simulations of exoplanet atmospheres with the next-generation Met Office model \\ & University of Leicester | Leicester, UK \\
 Apr 2024 & Shall I compare thee to a distant world? Inter-planet and inter-model comparative studies \\ & EGU General Assembly | Vienna, Austria \\
 Jul 2023 & Simulations of idealised 3D atmospheric flows on terrestrial planets using LFRic-Atmosphere \\ & NASA GISS Seminar | Online \\
 Mar 2023 & First results of using LFRic for exoplanet climate modelling \\ & NIWA Seminar | Wellington, New Zealand \\
 Feb 2023 & Atmospheric dynamics and chemistry on exoplanets \\ & UQ Astro Group Meeting | Brisbane, Australia \\
-Feb 2023 & \href{https://youtu.be/g4d-ibZvBIY}{Atmospheric dynamics and chemistry on exoplanets} \\ & UniSQ Exoplanet Group Seminar | Brisbane, Australia \\
+Feb 2023 & Atmospheric dynamics and chemistry on exoplanets~\href{https://youtu.be/g4d-ibZvBIY}{\link} \\ & UniSQ Exoplanet Group Seminar | Brisbane, Australia \\
 Feb 2023 & Atmospheric dynamics and chemistry on exoplanets \\ & UNSW AstroSeminar | Sydney, Australia \\
-Apr 2022 & \href{https://youtu.be/0uDBIp_EQrg}{Dichotomy of the atmospheric circulation on TRAPPIST-1e} \\ & NASA GISS Seminar | Online \\
+Apr 2022 & Dichotomy of the atmospheric circulation on TRAPPIST-1e~\href{https://youtu.be/0uDBIp_EQrg}{\link} \\ & NASA GISS Seminar | Online \\
 Jan 2022 & Dichotomy of the atmospheric circulation on TRAPPIST-1e \\ & NASA GSFC Extrasolar Planets Seminar | Online \\
 Nov 2021 & TRAPPIST-1 Habitable Atmosphere Intercomparison (THAI) \\ & MPIA APEx Exocoffee | Online \\
-May 2021 & \href{https://youtu.be/ZUfIK-HMgLw}{Overcast on TRAPPIST-1e} \\ & RCC MSU Geophysical Seminar | Online \\
-Sep 2020 & \href{https://youtu.be/E4UAoCoI1x8}{Simulations of convection over a range of atmospheric conditions on TRAPPIST-1e} \\ & THAI Workshop | Online \\
-Apr 2020 & \href{https://slides.com/denissergeev/2020-04-27-uor-met}{Atmospheric convection plays a key role in the climate of tidally locked exoplanets} \\ & University of Reading Meteorology Seminar | Online \\
-Apr 2020 & \href{https://slides.com/denissergeev/2020-04-21-nasa-giss}{Atmospheric convection plays a key role in the climate of tidally locked exoplanets} \\ & NASA GISS Seminar | Online \\
+May 2021 & Overcast on TRAPPIST-1e~\href{https://youtu.be/ZUfIK-HMgLw}{\link} \\ & RCC MSU Geophysical Seminar | Online \\
+Sep 2020 & Simulations of convection over a range of atmospheric conditions on TRAPPIST-1e~\href{https://youtu.be/E4UAoCoI1x8}{\link} \\ & THAI Workshop | Online \\
+Apr 2020 & Atmospheric convection plays a key role in the climate of tidally locked exoplanets~\href{https://slides.com/denissergeev/2020-04-27-uor-met}{\link} \\ & University of Reading Meteorology Seminar | Online \\
+Apr 2020 & Atmospheric convection plays a key role in the climate of tidally locked exoplanets~\href{https://slides.com/denissergeev/2020-04-21-nasa-giss}{\link} \\ & NASA GISS Seminar | Online \\
 \end{tabularx}
 \subsection*{Contributed Talks (12)}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
 Sep 2023 & Introducing GeoVista - Cartographic rendering and mesh analytics powered by PyVista (joint talk) \\ & Met Office Seminar | Exeter, UK \\
 Jul 2022 & Bistability of the atmospheric circulation on TRAPPIST-1e \\ & Rocky Worlds II | Oxford, UK \\
 Apr 2022 & Dichotomy of the atmospheric circulation on TRAPPIST-1e \\ & Exoplanet Modelling in the James Webb Era II: Terrestrial planets and sub-Neptunes | Online \\
-Nov 2020 & \href{https://slides.com/denissergeev/2020-11-10-um-workshop-sergeev}{Explicit convection on tidally locked rocky exoplanets simulated with the UM nesting suite} \\ & Unified Model users workshop | Online \\
-Aug 2019 & \href{https://youtu.be/9nGIpQiPwDs}{Simulations of moist convection on tidally-locked rocky exoplanets} \\ & Exoclimes V | Oxford, UK \\
-Jun 2019 & \href{https://speakerdeck.com/dennissergeev/north-atlantic-polar-mesoscale-cyclones-in-era5-and-era-interim-reanalyses}{North Atlantic polar mesoscale cyclones in ERA5 and ERA-Interim reanalyses} \\ & IGP workshop | Norwich, UK \\
+Nov 2020 & Explicit convection on tidally locked rocky exoplanets simulated with the UM nesting suite~\href{https://slides.com/denissergeev/2020-11-10-um-workshop-sergeev}{\link} \\ & Unified Model users workshop | Online \\
+Aug 2019 & Simulations of moist convection on tidally-locked rocky exoplanets~\href{https://youtu.be/9nGIpQiPwDs}{\link} \\ & Exoclimes V | Oxford, UK \\
+Jun 2019 & North Atlantic polar mesoscale cyclones in ERA5 and ERA-Interim reanalyses~\href{https://speakerdeck.com/dennissergeev/north-atlantic-polar-mesoscale-cyclones-in-era5-and-era-interim-reanalyses}{\link} \\ & IGP workshop | Norwich, UK \\
 Apr 2019 & Atmospheric convection on tidally-locked Earth-like exoplanets \\ & UK Exoplanet Community Meeting | London, UK \\
-Jun 2018 & \href{https://speakerdeck.com/dennissergeev/polar2018}{Modification of Polar Low Development by Sea Ice and Svalbard Orography} \\ & POLAR2018 | Davos, Switzerland \\
-Oct 2017 & \href{https://figshare.com/articles/The_influence_of_Svalbard_orography_and_sea_ice_on_polar_low_development/5510416}{The influence of Svalbard orography and sea ice on polar low development} \\ & 18th Cyclone Workshop | Sainte-Adèle, Canada \\
-Apr 2017 & \href{http://dennissergeev.github.io/ceeda2017}{Polar lows and how background environment can influence their development} \\ & Cambridge Earth Systems Science EnvEast Doctoral Alliance Symposium | Cambridge, UK \\
+Jun 2018 & Modification of Polar Low Development by Sea Ice and Svalbard Orography~\href{https://speakerdeck.com/dennissergeev/polar2018}{\link} \\ & POLAR2018 | Davos, Switzerland \\
+Oct 2017 & The influence of Svalbard orography and sea ice on polar low development~\href{https://figshare.com/articles/The_influence_of_Svalbard_orography_and_sea_ice_on_polar_low_development/5510416}{\link} \\ & 18th Cyclone Workshop | Sainte-Adèle, Canada \\
+Apr 2017 & Polar lows and how background environment can influence their development~\href{http://dennissergeev.github.io/ceeda2017}{\link} \\ & Cambridge Earth Systems Science EnvEast Doctoral Alliance Symposium | Cambridge, UK \\
 May 2016 & Structure of the shear-line polar low south of Svalbard \\ & NORPAN meeting | Tokyo, Japan \\
-Apr 2016 & \href{http://slides.com/denissergeev/deck}{Structure of the shear-line polar low south of Svalbard} \\ & 13th European Polar Lows Working Group Workshop | Paris, France \\
+Apr 2016 & Structure of the shear-line polar low south of Svalbard~\href{http://slides.com/denissergeev/deck}{\link} \\ & 13th European Polar Lows Working Group Workshop | Paris, France \\
 \end{tabularx}
 \subsection*{Poster Presentations (9)}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
@@ -130,33 +151,32 @@ Apr 2013 & Impact of subgrid-scale vegetation heterogeneity on the carbon cycle 
 Apr 2013 & Numerical modelling of polar mesocyclones generation mechanisms \\ & EGU General Assembly | Vienna, Austria \\
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-% Supervision
-%----------------------------------------------------------------------------------------
+
 \section{Supervision}
-\vspace{10pt}
-I am an integral member of the \href{https://exoclimatology.com}{Exeter Exoplanet Theory Group (EETG)}, and have been actively involved in the supervision of students --- both as a \highlightbold{lead supervisor} and as a co-supervisor.
-Undergraduate and Masters students who continued their academic career are marked with *.
-\\
-\subsection*{PhD Supervision (2)}
+\vspace{5pt}
+{\scriptsize(Projects with me as the lead supervisor are in \highlightbold{bold}. Students who continued their academic career are \ul{underlined}.)}
+\subsection*{PhD Supervision (3)}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Sep 2025--Sep 2029 & Alex Corbett \\
-                   & Project: Convection on Sub-Neptunes \\
+Sep 2025--Sep 2029 & \highlightbold{Alex Corbett} (U. Bristol) \\
+                   & \highlightbold{Project: Convection on Sub-Neptunes} \\
                    & Co-supervisors: B. Shipway, Z. Leinhardt \\
-Sep 2021--Sep 2025 & Martha (Mei Ting) Mak \\
+\tbc{Sep 2025--Sep 2029} & \tbc{TBC (U. Exeter)} \\
+                   & \tbc{Project: Forecasting Martian dust storms} \\
+                   & \tbc{Co-supervisors: N. J. Mayne, M. Bate, B.} Drummond \\
+Sep 2021--Apr 2025 & \ul{Martha (Mei Ting) Mak} (U. Exeter) \\
                    & Project: Hazes in Planetary Atmospheres \\
                    & Co-supervisors: N. J. Mayne, J. Manners, E. Hébrard \\
 \end{tabularx}
 \vspace{-10pt}
 \subsection*{Masters Supervision (12)}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Jan 2023--May 2024 & Tom Batchelor, Luke Benzing, \& Alex McGinty* \\
+Jan 2023--May 2024 & Tom Batchelor, Luke Benzing, \& \ul{Alex McGinty} \\
                    & Project: Mars Atmosphere Modelling \\
                    & Co-supervisors: M. Bate, N. J. Mayne, D. McCulloch \\
-Sep 2020--Sep 2022 & Danny McCulloch* (MSci by Research) \\
+Sep 2020--Sep 2022 & \ul{Danny McCulloch} (MSci by Research) \\
                    & Project: Climate Modelling of Modern-Day Mars \\
                    & Co-supervisors: M. Bate, N. J. Mayne \\
-Apr 2021--Sep 2022 & Meghan Plumridge* (MSci by Research) \\
+Apr 2021--Sep 2022 & \ul{Meghan Plumridge} (MSci by Research) \\
                    & Project: Climate Modelling of Early Mars \\
                    & Co-supervisors: M. Bate, N. J. Mayne \\
 Jan 2021--May 2022 & Jasper Chadwick \& Esse Sellwood \\
@@ -168,138 +188,91 @@ Jan 2021--May 2022 & Isabelle Browne \& Oakley Young \\
 Jan 2020--May 2021 & Toby Ferrison \\
                    & Project: Titan Climate Modelling \\
                    & Co-supervisor: F. H. Lambert \\
-Oct 2018--May 2019 & Jake Eager-Nash* \& David Reichelt \\
+Oct 2018--May 2019 & \ul{Jake Eager-Nash} \& David Reichelt \\
                    & Project: Implications of Stellar Type on the Climate of Tidally Locked Terrestrial Exoplanets \\
                    & Co-supervisors: F. H. Lambert, N. J. Mayne \\
 \end{tabularx}
 \vspace{-10pt}
-\subsection*{Undergraduate and Summer Internship Supervision (8)}
+\subsection*{Undergraduate and Summer Internship Supervision (7)}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Feb--Jun 2024 & Milo Whale \\
-              & Project: Sparse Atmospheric Modelling with the UM \\
-              & Co-supervisors: M. Braam, D. McCulloch, F. H. Lambert \\
-Jul--Sep 2022 & Oakley Young \\
+Jul--Sep 2022 & \ul{Oakley Young} \\
               & Project: Ekman Ocean Model \\
               & Co-supervisors: J. Eager-Nash, F. H. Lambert \\
-\highlightbold{Jun--Sep 2022} & \highlightbold{James McDermott* \& Lottie Woods} \\
+Jun--Sep 2022 & \highlightbold{\ul{James McDermott} \& \ul{Lottie Woods}} \\
                           & \highlightbold{Project: Simulations of Lightning Storms on Tidally Locked Rocky Exoplanets} \\
-Jun--Aug 2021 & Oakley Young \\
+Jun--Aug 2021 & \ul{Oakley Young} \\
               & Project: Climate Modelling of Archean Earth \\
               & Co-supervisors: J. Eager-Nash, N. J. Mayne \\
 Jun--Aug 2021 & Joshua Parkin \& Esse Sellwood \\
               & Project: The Impact of Host Star Spectrum on the Climate of Rocky Exoplanets \\
               & Co-supervisors: J. Eager-Nash, N. J. Mayne \\
-Jun--Aug 2019 & Isobel Parry* \\
+Jun--Aug 2019 & \ul{Isobel Parry} \\
               & Project: Water Cycle on Proxima Centauri b \\
               & Co-supervisor: F. H. Lambert \\
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-% Teaching
-%----------------------------------------------------------------------------------------
+
 \section{Teaching and Mentoring}
-\begin{tabularx}{\linewidth}{@{}=l +X@{}}
-Jan--Apr 2025 & Practical Physics III: Research Skills and Group Project (PHYS30033) \\ & Tutor | University of Bristol \\
-Jan--Apr 2025 & Research Project in Physics (PHYS30034) \\ & Assessor | University of Bristol \\
-Jul 2024 & \href{https://sites.google.com/view/algorithmsforexascale/home}{Algorithms For Exascale Summer School} \\ & Invited lecturer | University of Exeter | $\sim$20 students \\
-Feb 2024 & \href{https://emps.exeter.ac.uk/modules/PHY2222}{Physics of Climate Change (PHY2222)} \\ & Workshop lead | University of Exeter | $\sim$30 students\\
-Jul 2023 & \href{https://academy.climatematch.io/}{Climatematch Academy} \\ & Mentor | Online | 3 groups of $\sim$5 students\\
-Jul 2023 & \href{https://www.exeter.ac.uk/internationalsummerschool/sustainability}{International Sustainability Summer School} \\ & Lecturer | University of Exeter | $\sim$10 students \\
-Jun 2023 & \href{https://exoclimes.org/exoslam/index.html}{Exoclimes Summer School in Atmospheres and Modelling (ExoSLAM)} \\ & Co-chair \& lecturer | University of Exeter | $\sim$50 students \\
-Jan 2018 & \href{https://ueapy.github.io/pythoncourse2018}{ECR course ``Introduction to Python in Environmental Sciences''} \\ & Course creator \& lead | University of East Anglia | $\sim$50 students \\
+\begin{tabularx}{\linewidth}{@{}=r +X@{}}
+2025--now & Environmental Physics \\ & Lecturer | University of Bristol | $\sim$40 students \\
+2025--now & Practical Physics III: Research Skills and Group Project \\ & Tutor | University of Bristol | 2 groups of $\sim$7 students \\
+2025--now & Research Project in Physics \\ & Supervisor \& assessor | University of Bristol | $\sim$10 students \\
+Jul 2024 & Algorithms For Exascale Summer School~\href{https://sites.google.com/view/algorithmsforexascale/home}{\link} \\ & Invited lecturer | University of Exeter | $\sim$20 students \\
+Feb 2024 & Physics of Climate Change \\ & Workshop lead | University of Exeter | $\sim$30 students\\
+Jul 2023 & Climatematch Academy~\href{https://academy.climatematch.io}{\link} \\ & Mentor | Online | 3 groups of $\sim$5 students\\
+Jul 2023 & International Sustainability Summer School \\ & Lecturer | University of Exeter | $\sim$10 students \\
+Jun 2023 & Exoclimes Summer School in Atmospheres and Modelling (ExoSLAM)~\href{https://exoclimes.org/exoslam/index.html}{\link} \\ & Lecturer | University of Exeter | $\sim$50 students \\
+2016--2018 & Introduction to Python in Environmental Sciences~\href{https://ueapy.github.io/pythoncourse2018}{\link} \\ & Course creator \& lead | University of East Anglia | $\sim$50 students \\
 2015--2017 & Modelling Environmental Processes; Meteorology; Numerical Skills \\ & Teaching assistant | University of East Anglia \\
-Apr 2017 & Field Course in Meteorology \\ & Teaching assistant | Slapton / University of East Anglia \\
-Nov 2016 & \href{https://ueapy.github.io/enveast_python_course}{Python Training Course} \\ & Course creator \& lead | University of East Anglia | $\sim$30 students \\
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-% Service
-%----------------------------------------------------------------------------------------
-\section{Academic Community}
-\vspace{10pt}
-\begin{itemize}[nosep, leftmargin=10pt]
-    \item Awards and Recognition
-    \begin{itemize}
-        \item Above \& Beyond Award (x2) | University of Exeter, 2023
-    \end{itemize}
-    \item Organisation of Scientific Meetings
-    \begin{itemize}
-        \item \tbc{\href{https://www.lorentzcenter.nl/atmospheric-and-interior-evolution-of-planetary-magma-oceans.html}{Atmospheric and interior evolution of planetary magma oceans (SOC)} | Leiden, Oct 2025}
-        \item \tbc{\href{https://nexss.info/buffet-5-in-september-15th-and-16th-2025-registration-opened}{BUFFET-5: Building a Unified Framework For Exoplanet Treatments (Co-chair)} | Bordeaux, Sep 2025}
-        \item \tbc{\href{https://exoclimes.org}{Exoclimes VII (SOC)} | Montreal, Jul 2025}
-        \item \tbc{Idealised modelling with LFRic (Chair) | Exeter, Jun 2025}
-        \item \href{https://nexss.info/buffet-4-in-october-22nd-and-23rd-2024/}{BUFFET-4: Building a Unified Framework For Exoplanet Treatments (Co-chair)} | Online, Oct 2024
-        \item \href{https://exoplanets5.org/splintersessions/}{What's Cookin' Doc? A CUISINES meeting (Chair)} | Leiden, Jun 2024 | $\sim$20 attendees
-        \item \href{https://exoclim.github.ioexoclimes2023/exoslam/index.html}{ExoSLAM Summer School (Co-chair)} | Exeter, Jun 2023 | $\sim$50 attendees
-        \item \href{https://exoclim.github.ioexoclimes2023}{Exoclimes VI (LOC)} | Exeter, Jun 2023 | $\sim$200 attendees
-        \item Challenge of Science Leadership Short Course | Exeter, Mar 2023 | 11 attendees
-        \item Exeter Exoplanet Theory Group Summer Retreat | Mawgan Porth, Aug--Sep 2022 | 15 attendees
-    \end{itemize}
-    \item Committees and steering groups
-    \begin{itemize}
-        \item Co-lead of \href{https://nexss.info/cuisines}{Climates Using Interactive Suites of Intercomparisons Nested for Exoplanet Studies (CUISINES)}
-    \end{itemize}
-    \item Reviewing
-    \begin{itemize}
-        \item Journals: Planet. Sci. J., Geophys. Res. Lett., Nat. Astron., ApJ, Planet. Space Sci., Q. J. R. Meteorol. Soc.
-        \item Grants: STFC (Consolidated)
-        \item Facilities: JWST (Exoplanets \& Disks, Cycle 3)
-    \end{itemize}
-    \item Professional Memberships: Royal Astronomical Society, Europlanet Society
-\end{itemize}
 
-%----------------------------------------------------------------------------------------
-% Impact and outreach
-%----------------------------------------------------------------------------------------
-\section{Impact and Outreach}
-\vspace{10pt}
-\begin{itemize}[nosep, leftmargin=10pt]
-    \item Press Releases
-    \begin{itemize}
-        \item Joint PR from the \href{https://www.exeter.ac.uk/research/news/articles/questtouncoverintricacies.html}{University of Exeter}, \href{https://www.american.edu/news/20220811-trappist-1.cfm}{American University}, \& \href{https://www.insu.cnrs.fr/fr/cnrsinfo/la-quete-pour-percer-le-mystere-des-climats-de-planetes-similaires-la-terre-avance}{INSU CNRS} on the THAI project
-    \end{itemize}
-    \item Visualisation
-    \begin{itemize}
-        \item \href{https://issuu.com/universityofexeter/docs/images_of_research_2023}{``Cloudy Skies of Distant Exoplanets''}, University of Exeter Images of Research 2023
-        \item \href{https://dirac.ac.uk/research-image-competition-2023}{``A refined look at tidally locked exoplanets''}, DiRAC HPC Research Image Competition 2023
-        \item \href{https://exetersciencecentre.org/gallery/denis_sergeev_uoe_exoplanets}{``Exoplanetary Atmospheres''} at Science as Art Gallery (Exeter Science Centre)
-        \item \href{https://phys.org/news/2020-06-presence-airborne-signify-habitability-distant.html}{3D visualisation of dusty atmospheres for a Nature press release}
-        \item \href{https://youtu.be/Vnke9dWofR8&t=180}{Visualisation for the 360° VR video ``Virtual Reality Exploration of Exoplanets''}
-    \end{itemize}
-    \item Interviews
-    \begin{itemize}
-        \item \href{https://youtu.be/_Aus842EZWk}{UoE interview} about my research
-        \item \href{https://youtu.be/PzQSfCwp0B8}{UKRI/STFC interview} about outreach
-        \item Featured in the \href{https://theworld.org/stories/2018-08-03/sea-and-sky-scientists-brave-wicked-weather-explore-key-ocean-current}{PRI podcast} on the IGP campaign
-    \end{itemize}
-    \item Science Exhibitions
-    \begin{itemize}
-        \item Expert Scientist at the \href{https://exetersciencecentre.org/exhibition-2023}{Climate Exhibition} (part of British Science Festival 2023)
-    \end{itemize}
-    \item \href{https://www.stem.org.uk/stem-ambassadors}{STEM Ambassador}
-    \item School Visits
-    \begin{itemize}
-        \item Visit to Pool Academy as part of the \href{https://physics-astronomy.exeter.ac.uk/exoplanetexplorers/}{``Exoplanet Explorers'' programme}
-    \end{itemize}
-    \item Scientific Consulting
-    \begin{itemize}
-        \item \href{https://www.wethecurious.org/curious-stuff/stargazing-night-sky/exoplanet-explorers}{Videogame ``Exoplanet Explorers''} (STFC Nucleus grant ``4EP'', PI N. J. Mayne)
-    \end{itemize}
-    \item Blogging
-    \begin{itemize}
-        \item \href{http://www.scisnack.com/2015/12/17/disastrous-disaster-movies}{Disastrous Disaster Movies}
-        \item \href{http://www.scisnack.com/2015/03/04/polar-lows-what-fuels-arctic-hurricanes}{Polar Lows: What Fuels Arctic Hurricanes?}
-        \item \href{http://www.scisnack.com/2014/12/17/worldwide-weird-weather-words}{Worldwide Weird Weather Words}
-    \end{itemize}
-    \item Miscellaneous
-    \begin{itemize}
-        \item \href{https://twitter.com/atmosscibot}{AtmosSciBot}: Twitter bot that generates word clouds of open access publications in atmospheric sciences
-    \end{itemize}
-\end{itemize}
+\section{Research Leadership and Impact}
+\begin{tabularx}{\linewidth}{@{}=r +X@{}}
+2024--now & \ul{Co-lead} of Climates Using Interactive Suites of Intercomparisons Nested for Exoplanet Studies (CUISINES)~\href{https://nexss.info/cuisines}{\link}\\
+Jun 2023 & \ul{Co-chair} of Exoclimes Summer School in Atmospheres and Modelling (ExoSLAM)~\href{https://exoclimes.org/exoslam/index.html}{\link}\\
+2023 & Interview by the University of Exeter about my research~\href{https://youtu.be/_Aus842EZWk}{\link}\\
+2023 & Interview by UKRI/STFC about my outreach~\href{https://youtu.be/PzQSfCwp0B8}{\link}\\
+2023 & Expert Scientist at the British Science Festival Climate Exhibition~\href{https://exetersciencecentre.org/exhibition-2023}{\link}\\
+2022 & Press releases: University of Exeter~\href{https://www.exeter.ac.uk/research/news/articles/questtouncoverintricacies.html}{\link}, American University~\href{https://www.american.edu/news/20220811-trappist-1.cfm}{\link}, \& INSU CNRS~\href{https://www.insu.cnrs.fr/fr/cnrsinfo/la-quete-pour-percer-le-mystere-des-climats-de-planetes-similaires-la-terre-avance}{\link}\\
+2020--now & 3D visualisations of exoplanet simulations: \\
+& `Cloudy Skies of Distant Exoplanets'~\href{https://issuu.com/universityofexeter/docs/images_of_research_2023}{\link} | University of Exeter Images of Research 2023\\
+& `A refined look at tidally locked exoplanets'~\href{https://dirac.ac.uk/research-image-competition-2023}{\link} | DiRAC HPC Research Image Competition 2023\\
+& `Exoplanetary Atmospheres'~\href{https://exetersciencecentre.org/gallery/denis_sergeev_uoe_exoplanets}{\link} | Exeter Science Centre, Science as Art Gallery 2020\\
+& `Dusty exoplanet atmospheres'~\href{https://phys.org/news/2020-06-presence-airborne-signify-habitability-distant.html}{\link} | Nature Press Release\\
+& `Virtual Reality Exploration of Exoplanets'~\href{https://youtu.be/Vnke9dWofR8}{\link} | 360 VR video (contributor)\\
+2019 & Science consulting on the `Exoplanet Explorers' videogame\\
+2015 & Blogging: \\
+& Disastrous Disaster Movies~\href{http://www.scisnack.com/2015/12/17/disastrous-disaster-movies}{\link}\\
+& Polar Lows: What Fuels Arctic Hurricanes?~\href{http://www.scisnack.com/2015/03/04/polar-lows-what-fuels-arctic-hurricanes}{\link}\\
+& Worldwide Weird Weather Words~\href{http://www.scisnack.com/2014/12/17/worldwide-weird-weather-words}{\link}\\
+\end{tabularx}
 
-%----------------------------------------------------------------------------------------
-% Skills
-%----------------------------------------------------------------------------------------
+
+\section{Organisation of Scientific Meetings}
+\begin{tabularx}{\linewidth}{@{}=r +X@{}}
+Mar 2026 & UK Exoplanet Community Meeting (SOC)~\href{https://ukexom2026.blogs.bristol.ac.uk/}{\link} | Bristol, UK\\
+Oct 2025 & Atmospheric and interior evolution of planetary magma oceans (SOC)~\href{https://www.lorentzcenter.nl/atmospheric-and-interior-evolution-of-planetary-magma-oceans.html}{\link} | Leiden, the Netherlands\\
+Sep 2025 & BUFFET-5 (\ul{Co-chair})~\href{https://nexss.info/buffet-5-in-september-15th-and-16th-2025-registration-opened}{\link} | Bordeaux, France\\
+Jul 2025 & Exoclimes VII (SOC)~\href{https://exoclimes.org}{\link} | Montreal, Canada\\
+Jun 2025 & Idealised modelling with LFRic (\ul{Chair}) | Exeter, UK | $\sim$50 attendees\\
+Oct 2024 & BUFFET-4: Building a Unified Framework For Exoplanet Treatments (\ul{Co-chair})~\href{https://nexss.info/buffet-4-in-october-22nd-and-23rd-2024/}{\link} | Online\\
+Jun 2024 & What's Cookin' Doc? A CUISINES meeting (\ul{Chair})~\href{https://exoplanets5.org/splintersessions/}{\link} | Leiden, the Netherlands | $\sim$20 attendees\\
+Jun 2023 & ExoSLAM Summer School (\ul{Co-chair})~\href{https://exoclim.github.io/exoclimes2023/exoslam/index.html}{\link} | Exeter, UK | $\sim$50 attendees\\
+Jun 2023 & Exoclimes VI (LOC)~\href{https://exoclim.github.ioexoclimes2023}{\link} | Exeter, UK | $\sim$200 attendees\\
+Mar 2023 & Challenge of Science Leadership Short Course | Exeter, UK\\
+% Aug 2022 & Exoclimatology Theory Group Summer Retreat | Mawgan Porth, UK | 15 attendees\\
+\end{tabularx}
+
+
+\section{Reviewing and External Activities}
+\begin{tabularx}{\linewidth}{@{}=r +X@{}}
+2017--now & Reviewer for: Nat. Astron., MNRAS, Planet. Sci. J., Geophys. Res. Lett., ApJ, Planet. Space Sci., Q. J. R. Meteorol. Soc.\\
+2023--now & Expert reviewer for: the James Webb Space Telescope General Observer Programs (Exoplanets \& Disks, Cycles 3 \& 4)\\
+2021--now & Member of: the Royal Astronomical Society, Europlanet Society\\
+\end{tabularx}
+
+
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
 Languages & English (fluent), French (basic), Russian (native) \\
@@ -309,22 +282,20 @@ Python libraries (user) & cartopy, cython, iris, matplotlib, numpy, pandas, pyvi
 Python libraries (creator/contributor) & aeolus, cartopy, pyvista, geovista \\
 Parallel computing & Dask, MPI, OpenMP \\
 Version control & Git, Subversion \\
-Document preparation & \LaTeX, Jupyter Notebooks, Markdown, HTML, CSS, reST
+Document preparation & \LaTeX, Quarto, Jupyter Notebooks, Markdown, HTML, CSS, reST
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-% Training
-%----------------------------------------------------------------------------------------
+
 \section{Vocational Training}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Sep 2023 & \href{https://www.belbin.com}{Belbin Training} \\
-Mar 2023 & \href{http://www.scienceleadership.co.uk}{Challenge of Science Leadership} \\
+Sep 2023 & Belbin Training~\href{https://www.belbin.com}{\link} \\
+Mar 2023 & Challenge of Science Leadership~\href{http://www.scienceleadership.co.uk}{\link} \\
 Dec 2022 & Interview Training \\
 Jul 2020 & Writing Workshop for Climate Scientists \\
-Mar 2020 & \href{https://ers-imaging.github.io/uk_workshop}{ESA JWST Master Class} \\
-Jul 2019 & \href{https://indico.ictp.it/event/8669}{ICTP Summer School on Convective Organization and Climate Sensitivity} \\
-Apr 2018 & \href{https://www.nag.com/content/fortran-modernization-workshop}{Fortran Modernisation Workshop} \\
-Jan 2018 & \href{http://www.petans.co.uk/courses/survival/huet-caebs/}{Helicopter Underwater Escape Training Course (CA-EBS)} \\
+Mar 2020 & ESA JWST Master Class~\href{https://ers-imaging.github.io/uk_workshop}{\link} \\
+Jul 2019 & ICTP Summer School on Convective Organization and Climate Sensitivity~\href{https://indico.ictp.it/event/8669}{\link} \\
+Apr 2018 & Fortran Modernisation Workshop~\href{https://www.nag.com/content/fortran-modernization-workshop}{\link} \\
+Jan 2018 & Helicopter Underwater Escape Training Course (CA-EBS)~\href{http://www.petans.co.uk/courses/survival/huet-caebs/}{\link} \\
 Dec 2017 & Sea Survival Course \\
 Jun 2017 & Weather Presenting \\
 Feb 2017 & Level 1 First Aid for Field Work Course \\
@@ -334,13 +305,14 @@ Dec 2014 & UK Met Office Unified Model Training \\
 % Dec 2011 & \href{https://doi.org/10.1175/BAMS-D-11-00048.1}{Global Climate Change course} \\
 \end{tabularx}
 
+
 \section{Vocational Experience}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Apr--Jun 2018 & Data Technician \\ & \href{https://github.com/IGPResearch}{Processing of meteorological data collected in the IGP field campaign} | University of East Anglia \\
-2015--2018 & Founder and Leader \\ & \href{https://ueapy.github.io/}{Python Users Group} | University of East Anglia \\
-Feb--Mar 2018 & Member of the Meteorology Team \\ & \href{https://twitter.com/igpresearch}{The Iceland-Greenland Seas Project (IGP) field campaign} | Akureyri, Iceland \\
+Apr--Jun 2018 & Data Technician \\ & Processing of meteorological data collected in the IGP field campaign~\href{https://github.com/IGPResearch}{\link} | University of East Anglia \\
+2015--2018 & Founder and Leader \\ & Python Users Group~\href{https://ueapy.github.io/}{\link} | University of East Anglia \\
+Feb--Mar 2018 & Member of the Meteorology Team \\ & The Iceland-Greenland Seas Project (IGP) field campaign | Akureyri, Iceland \\
 % Characterising the atmospheric forcing and the ocean response of coupled atmosphere-ocean processes; in particular cold-air outbreaks in the vicinity of the marginal ice zone and their effect on the ocean
-Mar 2015 & Rapporteur \\ & \href{https://highlatdynamics.w.uib.no}{Dynamics of Atmosphere-Ice-Ocean Interactions in the High-Latitudes} | Rosendal, Norway \\
+Mar 2015 & Rapporteur \\ & Dynamics of Atmosphere-Ice-Ocean Interactions in the High-Latitudes~\href{https://highlatdynamics.w.uib.no}{\link} | Rosendal, Norway \\
 Oct 2013 & Research Intern \\ & Geophysical Institute | University of Bergen, Norway \\
 % & Supervisor: Alexey Eliseev \\
 Aug--Sep 2013 & Trainee Forecaster \\ & Forecast and Briefing Service | Main Aviation Meteorological Centre, Vnukovo Airport \\
