@@ -32,6 +32,11 @@ def replace_subscripts_and_superscripts(text):
     return pattern.sub(replacement, text)
 
 
+def remove_html_processing_instructions(text):
+    """Clean up HTML processing stuff from titles."""
+    return re.sub(r"&lt;\?.*?\?&gt;", "", text)
+
+
 def format_publication(pub: dict, idx: int = None, my_name: str = None) -> str:
     """Load publications from a JSON file and format them in TeX."""
     # Load journal abbreviations
@@ -73,6 +78,7 @@ def format_publication(pub: dict, idx: int = None, my_name: str = None) -> str:
     # Format the title
     title = pub["title"][0]
     title = replace_subscripts_and_superscripts(title)
+    title = remove_html_processing_instructions(title)
     entry += f", {title}"
 
     # Format the journal
