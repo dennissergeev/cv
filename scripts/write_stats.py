@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Write NASA ADS stats as TeX table."""
+
 import json
 
 from paths import metrics_file, publications_file, stats_file
@@ -15,12 +16,12 @@ def main(last_name):
         publications = json.load(f_json)["docs"]
     # Create a dictionary with required numbers
     stats = {}
-    stats["Total Pub."] = metrics["basic stats"]["number of papers"]
+    stats["Total Pub."] = metrics["basic stats"]["number of papers"] + len(
+        metrics["skipped bibcodes"]  # count arxiv papers too
+    )
     stats["Refereed"] = metrics["basic stats refereed"]["number of papers"]
     stats["First Author"] = sum(
-        1
-        for pub in publications
-        if pub["author"][0].split(",")[0] == last_name
+        1 for pub in publications if pub["author"][0].split(",")[0] == last_name
     )
     stats["Citations"] = metrics["citation stats"]["total number of citations"]
     stats["h-index"] = metrics["indicators"]["h"]
