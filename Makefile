@@ -1,6 +1,5 @@
 # Compile CV with LaTeX
-TEX = xelatex
-BIB = biber
+TEX = lualatex
 CV_FULL = sergeev_cv_full.pdf
 CV_SHORT = sergeev_cv_short.pdf
 SRC_FULL = sergeev_cv_full.tex
