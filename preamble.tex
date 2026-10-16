@@ -69,9 +69,10 @@ pdftitle={Denis Sergeev's CV}
 % Underlining
 \usepackage{soul}
 
-\newcommand{\sep}{~~\textbullet~~}
+\newcommand{\sep}{~~$\circ$~~}
 
-\newcommand{\link}{{\scriptsize\faExternalLink*}}
+\newcommand{\link}[1]{{\href{#1}{\scriptsize\faExternalLink*}}}
+
 \newcommand{\no}{{\scriptsize\#}}
 
 % To debug page outer frames
